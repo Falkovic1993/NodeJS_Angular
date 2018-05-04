@@ -11,7 +11,7 @@ module.exports.sendmail = function(mail){
         secure: false, // true for 465, false for other ports
         auth: {
             user: "emilfalkknudsen93@gmail.com", // generated ethereal user
-            pass: "Falken11" // generated ethereal password
+            pass: "T745cmGHfv1B" // generated ethereal password
         },
         tls:{
             rejectUnauthorized:false
