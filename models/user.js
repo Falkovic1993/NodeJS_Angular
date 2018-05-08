@@ -31,10 +31,16 @@ module.exports.getUserById = function(id, callback) {
 module.exports.getUserByUserEmail = function(email, callback){
 	let stmt = 'SELECT * FROM users WHERE email LIKE ?';
 	global.db.query(stmt, email, (err, user) => {
-		
 		return callback(false, user[0]);
+	}); 
+};
+
+module.exports.updateUser = function(newUser){
+	let jUser = [newUser, newUser.id];
+	let stmt = 'UPDATE users SET ? WHERE id = ?';
+	global.db.query(stmt, jUser, (err, user) => {
+		console.log(user);
 	});
-    
 };
 
 module.exports.comparePassword = function(TypedPassword, hash, callback){

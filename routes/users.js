@@ -57,10 +57,24 @@ router.post('/authenticate', (req, res) => {
 	});
 });
 
+router.post('/updateUser', ( req , res ) => {
+	let newUser = {
+		id: req.body.id,
+		name: req.body.firstname,
+		email: req.body.email,
+		username: req.body.lastname,
+		password: req.body.password,
+	};
+	console.log(newUser);
+	User.updateUser(newUser);
+	return res.json({success:true, msg:'User updated!'});
+});
+
 // profile 
 router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res) => {
 	res.json({user: req.user });
 });
+
 
 
 module.exports = router;
