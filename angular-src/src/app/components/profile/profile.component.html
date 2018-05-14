@@ -1,9 +1,10 @@
 <div *ngIf="user">
-  <h2 class="collection-header">{{user.name}}</h2>
+  <h2 class="collection-header">{{user.firstname}}</h2>
   <ul class="collection">
-    <li class="collection-item">Firstname: {{user.name}}</li>
-    <li class="collection-item">lastname: {{user.username}}</li>
-    <li class="collection-item">email: {{user.email}}</li>
+    <li class="collection-item">Firstname: {{user.firstname}}</li>
+    <li class="collection-item">Lastname: {{user.lastname}}</li>
+    <li class="collection-item">Email: {{user.email}}</li>
+    <li class="collection-item">Phone: {{user.phone}}</li>
     <br>
     <button class="waves-effect waves-light btn" (click)="openModal()">Modal</button>
   </ul>
@@ -16,7 +17,7 @@
         <div class="row">
           <div class="input-field col s12">
             <input [(ngModel)]="firstname" name="firstname" [formControl]="updateUserForm.controls['firstname']" type="text" class="validate">
-            <label for="register_first_name">{{user.name}}</label>
+            <label for="register_firstname">{{user.firstname}}</label>
             <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
           </div>
           <div class="input-field col s12">
@@ -30,14 +31,22 @@
             <label for="register_password">Password</label>
           </div>
         </div>
-
         <div class="row">
           <div class="input-field col s12">
             <input [(ngModel)]="email" name="email" [formControl]="updateUserForm.controls['email']" type="email" class="validate">
             <label for="register_email">Email</label>
           </div>
         </div>
+        <div class="row">
+            <div class="input-field col s12">
+              <input [(ngModel)]="phone" name="phone" [formControl]="updateUserForm.controls['phone']" type="phone" class="validate">
+              <label for="register_phone">Phone</label>
+            </div>
+          </div>
+
+        
         <button class="waves-effect  btn-flat" (click)="closeModal()">Close</button>
+
         <button class="modal-action modal-close waves-effect btn-flat" type="submit" name="action">Update
             <i class="material-icons right">send</i>
         </button>

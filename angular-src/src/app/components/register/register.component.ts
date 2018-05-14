@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import { AuthService } from '../../services/auth.service';
+import { myAuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { PasswordValidator } from '../../services/PasswordValidator';
+import { ValidateCharactersService } from '../../services/validate-characters.service';
 
 @Component({
   selector: 'app-register',
@@ -15,21 +17,31 @@ export class RegisterComponent implements OnInit {
   lastname:string;
   password:string;
   email:string;
+  phone:string;
+  image:File;
 
   constructor(
     private fb: FormBuilder, 
     private flashMessage: FlashMessagesService,
-    private authService: AuthService,
-    private router: Router) { }
+    private authService: myAuthService,
+    private router: Router,
+    private cd: ChangeDetectorRef ) { }
 
   ngOnInit() {
     this.registerForm = this.fb.group({
-      firstname:['', Validators.required],
-      lastname:["", Validators.required],
-      password:["", Validators.required],
-      password2:["", Validators.required],
+      firstname:['', [ValidateCharactersService.validateCharacters , Validators.required ]],
+      lastname:["", [ValidateCharactersService.validateCharacters , Validators.required ]],
+      password:["", [Validators.required,  PasswordValidator.getPasswordValidator()]],
+      password2:["", [Validators.required,  PasswordValidator.getPasswordValidator()]],
       email:["", Validators.email],
+      phone:["", Validators.required],
+      //profile_img:["", Validators.required],
     })
+  }
+
+  onFileChange(ev){
+    console.log(ev.target.files[0])
+    this.image = ev.target.files[0];
   }
 
   onSubmit(registerForm){
@@ -37,14 +49,19 @@ export class RegisterComponent implements OnInit {
       const user = {
         firstname: this.firstname,
         lastname: this.lastname,
+        email: this.email,
+        phone: this.phone,
         password: this.password,
-        email: this.email
+       // image: this.image
       }
+
       console.log(user)
+      this.authService.vertifyUserSMS(user);
       this.authService.registerUser(user).subscribe(data => {
         if(data.success){
-          this.flashMessage.show('You are now registered and can log in', {cssClass: 'green lighten-3', timeout:3000});
+          this.flashMessage.show('You are now registered - Vertify your mail to log in!', {cssClass: 'green lighten-3', timeout:3000});
           this.router.navigate(['/login']);
+          this.authService.vertifyUser(user.email);
         } else {
           this.flashMessage.show('There was an error', {cssClass: 'red', timeout:3000});
           this.router.navigate(['/register']);
@@ -56,4 +73,7 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  
+
+  
 }

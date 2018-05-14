@@ -1,0 +1,16 @@
+<div *ngIf="user">
+  <h2 class="collection-header center-align">{{user.firstname}}</h2>
+  <ul class="collection">
+    <li class="collection-item">Firstname: {{user.firstname}}</li>
+    <li class="collection-item">Lastname: {{user.lastname}}</li>
+    <li class="collection-item">Email: {{user.email}}</li>
+    <li class="collection-item">Phone: {{user.phone}}</li>
+    <br>
+  </ul>
+
+  <li ><a  [routerLinkActive]="['active']" [routerLink]="['stats']">Stats overview</a></li>
+  <li ><a  [routerLinkActive]="['active']" [routerLink]="['projects']">Current Projects</a></li>
+  <li ><a  [routerLinkActive]="['active']" [routerLink]="['detailedinfo']">More information</a></li>
+
+  <router-outlet></router-outlet>
+</div>

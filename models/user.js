@@ -1,5 +1,4 @@
 const bcrypt = require('bcryptjs');
-const mail = require('./nodemailer');
 
 
 
@@ -13,7 +12,7 @@ module.exports.addUser = function(newUser, callback){
 			global.db.query(stmt, newUser, (err, data) => {
 				// console.log(data);
 				if(err) throw err;
-				mail.sendmail(newUser.email);
+				//mail.sendmail(newUser.email);
 				return callback();
               
 			});
@@ -35,19 +34,51 @@ module.exports.getUserByUserEmail = function(email, callback){
 	}); 
 };
 
-module.exports.updateUser = function(newUser){
-	let jUser = [newUser, newUser.id];
-	let stmt = 'UPDATE users SET ? WHERE id = ?';
-	global.db.query(stmt, jUser, (err, user) => {
-		console.log(user);
+module.exports.activateUserAccount = function(mail, callback){
+	let stmt = 'UPDATE users SET isActive = ? WHERE email LIKE ?';
+	let data = [true, mail]
+	global.db.query(stmt, data, (err, user) => {
+		//console.log('USER INFO',user);
+		
+	}); 
+};
+
+module.exports.updateUser = function(newUser, callback){
+	bcrypt.genSalt(10, (err, salt) => {
+		if(err) throw err;
+		bcrypt.hash(newUser.password, salt, (err, hash) => {
+			if(err) throw err;
+			newUser.password = hash;
+			let jUser = [newUser, newUser.id];
+			let stmt = 'UPDATE users SET ? WHERE id = ?';
+			global.db.query(stmt, jUser, (err, user) => {
+			//console.log(user);
+				return callback(user);
+			});
+		});
 	});
 };
 
 module.exports.comparePassword = function(TypedPassword, hash, callback){
-	console.log('typedpassword', TypedPassword)
+	//console.log('typedpassword', TypedPassword)
 	bcrypt.compare(TypedPassword, hash, (err, isMatch) => {
 		if(err) throw err;
 		return callback(null, isMatch);
 	});
 };
 
+module.exports.getAllUsers = function(callback){
+	let stmt = 'SELECT * FROM users';
+	global.db.query(stmt,  (err, users) => {
+		//console.log(users);
+		return callback(false, users);
+	}); 
+};
+
+module.exports.deleteUser = function(id, callback){
+	const userId = id;
+	let stmt = 'DELETE FROM users WHERE id = ?';
+	global.db.query(stmt, userId, (err, data) => {
+		return callback(false, data);
+	});
+};

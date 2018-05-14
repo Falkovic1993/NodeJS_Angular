@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
-
-describe('anuglar-src App', () => {
+/*
+describe('findasitter App', () => {
   let page: AppPage;
 
   beforeEach(() => {
@@ -12,3 +12,4 @@ describe('anuglar-src App', () => {
     expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
 });
+*/

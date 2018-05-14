@@ -1,0 +1,20 @@
+<h1>Chat Room</h1>
+
+
+
+<div class="container">
+  <table class="highlight">
+    <tbody>
+      <tr *ngFor="let message of messages">
+        <td>{{message.firstname}}</td>
+        <td>{{message.messages}}</td>
+        <td>{{message.date | date }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+<textarea ref-textarea [(ngModel)]="message" rows="4"></textarea><br/>
+<button class="btn" (click)="sendMessage(textarea.value)">send Message</button>
+        
+

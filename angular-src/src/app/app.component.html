@@ -2,11 +2,11 @@
   <app-navbar></app-navbar>
 </div>
 
-
+<app-sidenav *ngIf="authService.loggedIn()"></app-sidenav>
 <div class="wrapper main">
   <flash-messages></flash-messages>
   <router-outlet></router-outlet>
-  <app-sidenav *ngIf="authService.loggedIn()"></app-sidenav>
+  
 </div>
 
 

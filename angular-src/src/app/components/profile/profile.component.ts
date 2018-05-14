@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter,   } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { myAuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import {MaterializeAction} from 'angular2-materialize';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -25,11 +25,12 @@ export class ProfileComponent implements OnInit {
   email:string;
   profile: User;
   name:string;
+  phone:number;
 
   
   
   constructor(
-    private authService:AuthService,
+    private authService:myAuthService,
     private router:Router,
     private fb: FormBuilder,
     private flashMessage: FlashMessagesService,
@@ -50,6 +51,7 @@ export class ProfileComponent implements OnInit {
       lastname:["", Validators.required],
       password:["", Validators.required],
       email:["", Validators.email],
+      phone:["", Validators.required],
     })
 
     
@@ -66,11 +68,10 @@ export class ProfileComponent implements OnInit {
       const newUser  = {
         id: this.user.id,
         firstname: this.firstname,
-        name: this.firstname,
         lastname: this.lastname,
         password: this.password,
         email: this.email,
-        username: this.firstname
+        phone: this.phone,
       }
       
       this.userActions.updateUser(newUser)
@@ -91,5 +92,5 @@ export class ProfileComponent implements OnInit {
       }
       
     }*/
-}
+} 
   }}

@@ -2,8 +2,9 @@ import { MaterializeModule } from 'angular2-materialize';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { NgRedux, DevToolsExtension, NgReduxModule } from '@angular-redux/store';
 import { IAppState, rootReducer } from './store/store';
@@ -29,13 +30,25 @@ import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FooterComponent } from './components/footer/footer.component';
 
-import { ValidateService } from './services/validate.service';
-import { AuthService } from './services/auth.service';
+
+import { myAuthService } from './services/auth.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AuthGuard } from './guards/auth.guard';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { UsersEpic } from './users.epic';
 import { UsersListComponent } from './components/users-list/users-list.component';
+import { UsersActions } from './components/users-list/users-list.action';
+
+import {  SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from "angular5-social-login";
+import { ChatroomComponent } from './components/chatroom/chatroom.component';
+import { ChatService } from './services/chat.service';
+import { WebsocketService } from './services/websocket.service';
+import { UserdetailsComponent } from './components/userdetails/userdetails.component';
+import { StatsComponent } from './components/stats/stats.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { DetailedinformationComponent } from './components/detailedinformation/detailedinformation.component';
+import { FilterusersPipe } from './filterusers.pipe';
+
 
 
 @NgModule({
@@ -49,11 +62,19 @@ import { UsersListComponent } from './components/users-list/users-list.component
     ProfileComponent,
     FooterComponent,
     SidenavComponent,
-    UsersListComponent
+    UsersListComponent,
+    ChatroomComponent,
+    UserdetailsComponent,
+    StatsComponent,
+    ProjectsComponent,
+    DetailedinformationComponent,
+    FilterusersPipe
   ],
   imports: [
+    FormsModule,
     MaterializeModule,
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatMenuModule,
@@ -63,9 +84,22 @@ import { UsersListComponent } from './components/users-list/users-list.component
     FlashMessagesModule.forRoot(),
     HttpModule,
     NgReduxModule,
-    NgReduxRouterModule.forRoot()
+    NgReduxRouterModule.forRoot(),
+    SocialLoginModule
   ],
-  providers: [ValidateService, AuthService, AuthGuard, UserActions, UsersEpic ],
+  providers: [
+    myAuthService,
+    AuthGuard,
+    UserActions,
+    UsersActions,
+    UsersEpic,
+    {
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
+    },
+    ChatService,
+    WebsocketService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
@@ -78,7 +112,9 @@ export class AppModule {
 
     const rootEpic = combineEpics(
       this.usersEpic.getUser,
-      this.usersEpic.updateUser, 
+      this.usersEpic.updateUser,
+      this.usersEpic.getAllUsers,
+      this.usersEpic.deleteUser 
         // Each epic is referenced here.
     );
         
@@ -94,4 +130,20 @@ export class AppModule {
       ngReduxRouter.initialize(/* args */);   
   }
  }
+
+ // GOOGLE AND FACEBOOK LGOIN
+ export function getAuthServiceConfigs() {
+  let config = new AuthServiceConfig(
+      [
+        {
+          id: FacebookLoginProvider.PROVIDER_ID,
+          provider: new FacebookLoginProvider("Your-Facebook-app-id")
+        },
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider("519676817251-00tmt8ii5s68ll9pgtojc7rcebtbu66e.apps.googleusercontent.com")
+        },
+      ]);
+  return config;
+}
  

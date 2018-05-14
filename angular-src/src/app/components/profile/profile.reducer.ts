@@ -2,9 +2,9 @@ import { UserActions } from './profile.action';
 import { UserState } from '../../store/store';
 import { tassign } from 'tassign';
 
-const INITIAL_STATE: UserState = { user: undefined, users: [] }
+const INITIAL_STATE: UserState = { user: undefined }
 
-export function UsersReducer(state: UserState = INITIAL_STATE, action:any) {
+export function UserReducer(state: UserState = INITIAL_STATE, action:any) {
 
  switch (action.type) {
 

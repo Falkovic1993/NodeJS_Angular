@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../store/store';
 import { User } from '../../entities/user';
+
+
 @Injectable()
 export class UserActions {
 constructor (

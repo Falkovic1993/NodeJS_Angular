@@ -5,15 +5,34 @@ import { tokenNotExpired } from 'angular2-jwt';
 import { User } from '../entities/user';
 
 @Injectable()
-export class AuthService {
+export class myAuthService {
   authToken: any;
   user: any;
 
   constructor(private http:Http ) { }
 
+  
+
+  vertifyUser(to){
+    console.log('Email:',to)
+    return this.http.post('http://localhost:3000/users/send', {to:to}).subscribe(function(data) {
+      if(data)
+      console.log(data)
+    })
+  }
+
+  vertifyUserSMS(user){
+    let headers = new Headers();
+    const ApiToken = '$2y$10$XE8PnMXRtvHUbBuaDQPVnugRwUxoOx85SZzoCtoWGwKDnKeK8av7O'
+    let data = `apiToken=$2y$10$XE8PnMXRtvHUbBuaDQPVnugRwUxoOx85SZzoCtoWGwKDnKeK8av7O&message=${user.firstname}&mobile=${user.phone}`;
+    headers.append('Content-type','application/x-www-form-urlencoded');
+    return this.http.post('http://smses.io/api-send-sms.php', data , {headers:headers})
+      .subscribe(res => res.json());
+  }
 
   registerUser(user){
     let headers = new Headers();
+    //console.log(user)
     headers.append('Content-type','application/json');
     return this.http.post('http://localhost:3000/users/register', user, {headers:headers})
       .map(res => res.json());
@@ -43,6 +62,30 @@ export class AuthService {
       .map(res => res.json());
   }
 
+  deleteUser(id){
+    let headers = new Headers();
+    console.log(id)
+    headers.append('id', id)
+    return this.http.post('http://localhost:3000/users/deleteUser', id, {headers:headers})
+    .map(res => res.json());
+  }
+
+  getUserById(id){
+    let headers = new Headers();
+    console.log(id)
+    headers.append('id', id)
+    return this.http.post('http://localhost:3000/users/getuserbyid', id, {headers:headers})
+    .map(res => res.json());
+  }
+  
+
+  getAllUsers(){
+    let headers = new Headers();
+    headers.append('Content-type','application/json');
+    return this.http.get('http://localhost:3000/users/getAllUsers', {headers:headers})
+    .map(res => res.json());
+  }
+
   storeUserData(token, user) {
   localStorage.setItem('id_token', token);
   localStorage.setItem('user', JSON.stringify(user));
@@ -64,5 +107,7 @@ export class AuthService {
   this.user = null;
   localStorage.clear();
   }
+
+
 
 }

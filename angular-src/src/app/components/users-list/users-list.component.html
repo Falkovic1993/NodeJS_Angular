@@ -1,3 +1,29 @@
-<p>
-  users-list works!
-</p>
+<div class="collection-header">
+    <input type="text" [(ngModel)]="search" placeholder="Search for users">
+</div>
+
+<table class="highlight" >
+  <thead>
+    <tr>
+        <th>id</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>User info</th>
+        <th>Delete user</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let user of users | filterusers: search'>
+      <td>{{user.id}}</td>
+      <td>{{user.firstname | uppercase}}</td>
+      <td>{{user.lastname}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.phone}}</td>
+      <td><button class="btn" (click)='userDetails(user.id)'>Information <i class="material-icons">info</i></button></td>
+      <td><button class="btn" (click)='deleteUser(user.id)'>Remove <i class="material-icons">delete</i></button></td>
+    </tr>
+  </tbody>
+  <div *ngIf="user === -1"> No baby found </div>
+</table>
