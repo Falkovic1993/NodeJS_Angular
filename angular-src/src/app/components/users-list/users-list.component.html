@@ -15,14 +15,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor='let user of users | filterusers: search'>
+    <tr class="userslist" *ngFor='let user of users | filterusers: search'>
       <td>{{user.id}}</td>
       <td>{{user.firstname | uppercase}}</td>
       <td>{{user.lastname}}</td>
       <td>{{user.email}}</td>
       <td>{{user.phone}}</td>
       <td><button class="btn" (click)='userDetails(user.id)'>Information <i class="material-icons">info</i></button></td>
-      <td><button class="btn" (click)='deleteUser(user.id)'>Remove <i class="material-icons">delete</i></button></td>
+      <td><button class="btn btnDeleteUser" (click)='deleteUser(user.id)'>Remove <i class="material-icons">delete</i></button></td>
     </tr>
   </tbody>
   <div *ngIf="user === -1"> No baby found </div>

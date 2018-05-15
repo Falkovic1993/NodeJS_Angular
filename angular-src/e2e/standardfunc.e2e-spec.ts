@@ -13,7 +13,7 @@ describe('Test standard user functions as register, login, logout', () => {
       element(by.id('phone')).sendKeys('12345678');
       element(by.id('btnSignUp')).click();
       const EC = protractor.ExpectedConditions;
-      browser.wait(EC.urlContains('http://localhost:49152/login'), 5000).then(function(result) {
+      browser.wait(EC.urlContains('http://localhost:49152/login'), 1000).then(function(result) {
         expect(result).toEqual(true);
       })
   })
@@ -23,7 +23,7 @@ describe('Test standard user functions as register, login, logout', () => {
     element(by.id('email')).sendKeys('emil93falk@hotmail.com');
     element(by.id('btnLogin')).click();
       const EC = protractor.ExpectedConditions;
-      browser.wait(EC.urlContains('http://localhost:49152/dashboard'), 5000).then(function(result) {
+      browser.wait(EC.urlContains('http://localhost:49152/dashboard'), 1000).then(function(result) {
         expect(result).toEqual(true);
       })
   })
@@ -33,9 +33,9 @@ describe('Test standard user functions as register, login, logout', () => {
     element(by.id('email')).sendKeys('emil93falk@hotmail.com');
     element(by.id('btnLogin')).click();
       const EC = protractor.ExpectedConditions;
-      browser.wait(EC.urlContains('http://localhost:49152/dashboard'), 5000).then(function(result) {
+      browser.wait(EC.urlContains('http://localhost:49152/dashboard'), 1000).then(function(result) {
         element(by.id('btnLogout')).click();
-        browser.wait(EC.urlContains('http://localhost:49152/home'), 5000).then(function(result) {
+        browser.wait(EC.urlContains('http://localhost:49152/home'), 1000).then(function(result) {
         expect(result).toEqual(true);
       })
       })

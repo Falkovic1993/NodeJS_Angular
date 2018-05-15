@@ -6,7 +6,13 @@
   <table class="highlight">
     <tbody>
       <tr *ngFor="let message of messages">
-        <td>{{message.firstname}}</td>
+          
+        <td>
+            <div class="chip">
+                <img src="../../../assets/img/yuna.jpg" alt="Contact Person">
+                {{message.firstname}}
+              </div>
+        </td>
         <td>{{message.messages}}</td>
         <td>{{message.date | date }}</td>
       </tr>

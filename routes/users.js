@@ -5,11 +5,24 @@ const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const nodemailer = require('nodemailer');
 const url = require('url');
-const fs = require('fs');
+var multer = require('multer');
+
+
 
 
 //const formidable = require('express-formidable');
 //router.use(formidable());
+var storage = multer.diskStorage({
+	// destination
+	destination: function (req, file, cb) {
+		cb(null, './upload/');
+	},
+	filename: function (req, file, cb) {
+		cb(null, Date.now() + file.originalname);
+	}
+});
+
+var upload = multer({ storage: storage });
 
 
 router.post('/getuserbyid', (req, res) => {
@@ -20,6 +33,11 @@ router.post('/getuserbyid', (req, res) => {
 	});
 });
 
+router.post('/upload', upload.array('uploads[]', 12), function (req, res) {
+	console.log('files', req.files);
+	res.send(req.files);
+});
+
 
 router.post('/register', (req, res) => {
 	let newUser = {
@@ -28,13 +46,10 @@ router.post('/register', (req, res) => {
 		password: req.fields.password,
 		email: req.fields.email,
 		phone: req.fields.phone,
-		image: req.fields.image,
+		//image: req.fields.image,
 	};
-	console.log(req.fields, req.files);
-
-	var oldpath = req.fields.image;
-	var newpath = '../images' + req.fields.image;
-	fs.rename
+	console.log('FILES', req.files);
+	
 
 	User.addUser(newUser, (err, user) => {
 		if(err){

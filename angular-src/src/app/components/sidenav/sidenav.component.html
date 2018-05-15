@@ -3,9 +3,9 @@
     <ul id="slide-out" class="sidenav sidenav-fixed">
         <li><div class="user-view">
           <div class="background">
-            <img src="../../../img/office.jpg">
+            <img src="../../../assets/img/office.jpg">
           </div>
-          <a href="#user"><img class="circle" src="/img/yuna.jpg"></a>
+          <a href="#user"><img alt="profileimage" class="circle" src="../../../assets/img/yuna.jpg"></a>
           <a href="#name"><span class="white-text name">John Doe</span></a>
           <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
         </div></li>
@@ -13,6 +13,6 @@
         <li><a class="subheader">Dashboard</a></li>
         <li><a class="waves-effect" href="#!">Sales overview</a></li>
         <li><a class="waves-effect" href="#!">Inventory</a></li>
-        <li *ngIf="authService.loggedIn()"><a  [routerLinkActive]="['active']" [routerLink]="['/employess']">Employees</a></li>
+        <li *ngIf="authService.loggedIn()"><a id="navUserlist"  [routerLinkActive]="['active']" [routerLink]="['/employess']">Employees</a></li>
         <li *ngIf="authService.loggedIn()"><a  [routerLinkActive]="['active']" [routerLink]="['/chatroom']">Chat room</a></li>
       </ul>

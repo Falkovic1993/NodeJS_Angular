@@ -5,6 +5,7 @@ import { myAuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { PasswordValidator } from '../../services/PasswordValidator';
 import { ValidateCharactersService } from '../../services/validate-characters.service';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-register',
@@ -18,14 +19,15 @@ export class RegisterComponent implements OnInit {
   password:string;
   email:string;
   phone:string;
-  image:File;
+  filesToUpload: Array<File> = [];
 
   constructor(
     private fb: FormBuilder, 
     private flashMessage: FlashMessagesService,
     private authService: myAuthService,
     private router: Router,
-    private cd: ChangeDetectorRef ) { }
+    private cd: ChangeDetectorRef,
+    private http:Http ) { }
 
   ngOnInit() {
     this.registerForm = this.fb.group({
@@ -35,14 +37,28 @@ export class RegisterComponent implements OnInit {
       password2:["", [Validators.required,  PasswordValidator.getPasswordValidator()]],
       email:["", Validators.email],
       phone:["", Validators.required],
-      image:["", Validators.required],
     })
   }
 
-  onFileChange(event){
-    console.log(event.target.files[0])
-    this.image = event.target.files[0];
-  }
+  upload() {
+    const formData: any = new FormData();
+    const files: Array<File> = this.filesToUpload;
+    console.log(files);
+
+    for(let i =0; i < files.length; i++){
+        formData.append("uploads[]", files[i], files[i]['name']);
+    }
+    console.log('form data variable :   '+ formData.toString());
+    this.http.post('http://localhost:3000/users/upload', formData)
+        .map(files => files.json())
+        .subscribe(files => console.log('files', files))
+}
+
+fileChangeEvent(fileInput: any) {
+    this.filesToUpload = <Array<File>>fileInput.target.files;
+    //this.product.photo = fileInput.target.files[0]['name'];
+}
+
 
   onSubmit(registerForm){
     if(registerForm.valid) {
@@ -52,7 +68,6 @@ export class RegisterComponent implements OnInit {
         email: this.email,
         phone: this.phone,
         password: this.password,
-        image: this.image
       }
 
       console.log(user)

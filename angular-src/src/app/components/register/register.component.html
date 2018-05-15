@@ -55,15 +55,11 @@
         <div class="file-field input-field col s12">
             <div class="btn">
                 <span>File</span>
-                <input type="file">
+                <input type="file" [formControl]="registerForm.controls['image']" (change)="fileChangeEvent($event)" placeholder="Upload a file..." multiple/>
             </div>
-              <div class="file-path-wrapper">
-                  <input id="image" [formControl]="registerForm.controls['image']" type="file" name="image" (change)="onFileChange($event)" />
-              </div>
-            </div>
-          </div>
-        
-      <button class="btn waves-effect waves-light" type="submit" name="action" id="btnSignUp">Register
+        </div>
+      </div>
+      <button class="btn waves-effect waves-light" type="submit" name="action" id="btnSignUp" (click)="upload()">Register
           <i class="material-icons right">send</i>
       </button>
      

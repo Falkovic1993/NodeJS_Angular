@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 
 import { NgRedux, DevToolsExtension, NgReduxModule } from '@angular-redux/store';
 import { IAppState, rootReducer } from './store/store';
@@ -48,6 +49,7 @@ import { StatsComponent } from './components/stats/stats.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { DetailedinformationComponent } from './components/detailedinformation/detailedinformation.component';
 import { FilterusersPipe } from './filterusers.pipe';
+import { PasswordValidator } from './services/PasswordValidator';
 
 
 
@@ -68,7 +70,8 @@ import { FilterusersPipe } from './filterusers.pipe';
     StatsComponent,
     ProjectsComponent,
     DetailedinformationComponent,
-    FilterusersPipe
+    FilterusersPipe,
+    FileSelectDirective
   ],
   imports: [
     FormsModule,
@@ -93,6 +96,7 @@ import { FilterusersPipe } from './filterusers.pipe';
     UserActions,
     UsersActions,
     UsersEpic,
+    PasswordValidator,
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs
