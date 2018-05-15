@@ -35,13 +35,13 @@ export class RegisterComponent implements OnInit {
       password2:["", [Validators.required,  PasswordValidator.getPasswordValidator()]],
       email:["", Validators.email],
       phone:["", Validators.required],
-      //profile_img:["", Validators.required],
+      image:["", Validators.required],
     })
   }
 
-  onFileChange(ev){
-    console.log(ev.target.files[0])
-    this.image = ev.target.files[0];
+  onFileChange(event){
+    console.log(event.target.files[0])
+    this.image = event.target.files[0];
   }
 
   onSubmit(registerForm){
@@ -52,12 +52,12 @@ export class RegisterComponent implements OnInit {
         email: this.email,
         phone: this.phone,
         password: this.password,
-       // image: this.image
+        image: this.image
       }
 
       console.log(user)
-      this.authService.vertifyUserSMS(user);
-      this.authService.registerUser(user).subscribe(data => {
+     // this.authService.vertifyUserSMS(user);
+      this.authService.registerUser(registerForm).subscribe(data => {
         if(data.success){
           this.flashMessage.show('You are now registered - Vertify your mail to log in!', {cssClass: 'green lighten-3', timeout:3000});
           this.router.navigate(['/login']);

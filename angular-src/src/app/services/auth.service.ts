@@ -31,10 +31,9 @@ export class myAuthService {
   }
 
   registerUser(user){
-    let headers = new Headers();
-    //console.log(user)
-    headers.append('Content-type','application/json');
-    return this.http.post('http://localhost:3000/users/register', user, {headers:headers})
+   
+    console.log('EHEHHEHEHEE',user.get('firstname'))
+    return this.http.post('http://localhost:3000/users/register', user.value)
       .map(res => res.json());
   }
 
@@ -65,6 +64,7 @@ export class myAuthService {
   deleteUser(id){
     let headers = new Headers();
     console.log(id)
+    headers.append('Content-type','application/json');
     headers.append('id', id)
     return this.http.post('http://localhost:3000/users/deleteUser', id, {headers:headers})
     .map(res => res.json());
@@ -73,6 +73,7 @@ export class myAuthService {
   getUserById(id){
     let headers = new Headers();
     console.log(id)
+    headers.append('Content-type','application/json');
     headers.append('id', id)
     return this.http.post('http://localhost:3000/users/getuserbyid', id, {headers:headers})
     .map(res => res.json());

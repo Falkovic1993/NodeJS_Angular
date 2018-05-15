@@ -10,11 +10,8 @@ module.exports.addUser = function(newUser, callback){
 			newUser.password = hash;
 			let stmt = 'INSERT INTO users SET ?';
 			global.db.query(stmt, newUser, (err, data) => {
-				// console.log(data);
 				if(err) throw err;
-				//mail.sendmail(newUser.email);
-				return callback();
-              
+				return callback(null, data);
 			});
 		});
 	});
@@ -39,7 +36,6 @@ module.exports.activateUserAccount = function(mail, callback){
 	let data = [true, mail]
 	global.db.query(stmt, data, (err, user) => {
 		//console.log('USER INFO',user);
-		
 	}); 
 };
 
@@ -53,7 +49,7 @@ module.exports.updateUser = function(newUser, callback){
 			let stmt = 'UPDATE users SET ? WHERE id = ?';
 			global.db.query(stmt, jUser, (err, user) => {
 			//console.log(user);
-				return callback(user);
+
 			});
 		});
 	});

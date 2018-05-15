@@ -1,12 +1,15 @@
 //const express = require('express');
 //const app = express();
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 //const database = require('./config/database');
 const passport = require('passport');
 const cors = require('cors');
 let app = require('express')();
 let http = require('http').Server(app);
 let io = require('socket.io')(http);
+//const formidable = require('express-formidable');
+var formidable = require('formidable');
+
 
 
 const port = 3000;
@@ -14,10 +17,24 @@ const users = require('./routes/users');
 const messages = require('./routes/messages');
 
 //Middleware Formidable
+//app.use(formidable());
 
+app.use(function (req, res, next) {
+	var form = new formidable.IncomingForm({
+	encoding: 'utf-8',
+	uploadDir: './tmp',
+	multiples: true,
+	keepExtensions: true
+	})
+	form.once('error', console.log)
+	form.parse(req, function (err, fields, files) {
+	Object.assign(req, {fields, files});
+	next();
+	})
+	})
 
 //Middleware BodyParser
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
 
 app.use(cors());
 

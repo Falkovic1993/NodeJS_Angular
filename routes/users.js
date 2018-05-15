@@ -4,7 +4,9 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const nodemailer = require('nodemailer');
-const url = require('url');   
+const url = require('url');
+const fs = require('fs');
+
 
 //const formidable = require('express-formidable');
 //router.use(formidable());
@@ -20,21 +22,23 @@ router.post('/getuserbyid', (req, res) => {
 
 
 router.post('/register', (req, res) => {
-	
-	console.log('REQ',req);
-	console.log('FILES',req.files);
 	let newUser = {
-		firstname: req.body.firstname,
-		lastname: req.body.lastname,
-		password: req.body.password,
-		email: req.body.email,
-		phone: req.body.phone,
-		
+		firstname: req.fields.firstname,
+		lastname: req.fields.lastname,
+		password: req.fields.password,
+		email: req.fields.email,
+		phone: req.fields.phone,
+		image: req.fields.image,
 	};
-	//console.log(req.body)
+	console.log(req.fields, req.files);
+
+	var oldpath = req.fields.image;
+	var newpath = '../images' + req.fields.image;
+	fs.rename
+
 	User.addUser(newUser, (err, user) => {
 		if(err){
-			return	res.json({success:false, msg:'Failed to register user'});
+			return res.json({success:false, msg:'Failed to register user'});
 		}else{
 			return res.json({success:true, msg:'User registered - See your email to vertify it! '});
 		}
@@ -42,9 +46,9 @@ router.post('/register', (req, res) => {
 });
 
 router.post('/authenticate', (req, res) => {
-	const email = req.body.email;
-	const password = req.body.password;
-	const googleToken = req.body.token
+	const email = req.fields.email;
+	const password = req.fields.password;
+	const googleToken = req.fields.token;
 	console.log(email);
 
 	User.getUserByUserEmail(email, (err, user) => {
@@ -95,12 +99,12 @@ router.post('/authenticate', (req, res) => {
 
 router.post('/updateUser', ( req , res ) => {
 	let newUser = {
-		id: req.body.id,
-		firstname: req.body.firstname,
-		lastname: req.body.lastname,
-		email: req.body.email,
-		password: req.body.password,
-		phone: req.body.phone,
+		id: req.fields.id,
+		firstname: req.fields.firstname,
+		lastname: req.fields.lastname,
+		email: req.fields.email,
+		password: req.fields.password,
+		phone: req.fields.phone,
 	};
 	User.updateUser(newUser);
 	return res.json({success:true, msg:'User updated!'});
@@ -153,7 +157,7 @@ router.post('/send', function(req,res){
 	link = 'http://'+req.get('host')+'/users/verify?id='+rand;
 
 	mailOptions={
-		to : req.body.to,
+		to : req.fields.to,
 		subject : 'Please confirm your Email account',
 		html : 'Hello,<br> Please Click on the link to verify your email.<br><a href='+link+'>Click here to verify</a>' 
 	};
