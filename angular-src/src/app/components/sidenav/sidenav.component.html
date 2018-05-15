@@ -13,6 +13,6 @@
         <li><a class="subheader">Dashboard</a></li>
         <li><a class="waves-effect" href="#!">Sales overview</a></li>
         <li><a class="waves-effect" href="#!">Inventory</a></li>
-        <li *ngIf="authService.loggedIn()"><a id="navUserlist"  [routerLinkActive]="['active']" [routerLink]="['/employess']">Employees</a></li>
+        <li *ngIf="authService.loggedIn()"><a id="navUserlist"  [routerLinkActive]="['active']" [routerLink]="['/employess']">Employees<span class="new badge pulse">4</span></a></li>
         <li *ngIf="authService.loggedIn()"><a  [routerLinkActive]="['active']" [routerLink]="['/chatroom']">Chat room</a></li>
       </ul>

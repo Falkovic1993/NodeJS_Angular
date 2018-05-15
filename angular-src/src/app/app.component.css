@@ -1,9 +1,5 @@
-.navbar {
-  height: 50px;
-}
-
-.header, .main, .footer {
-  padding-left: 200px;
+.loggedin{
+  padding-left: 300px;
 }
 
 

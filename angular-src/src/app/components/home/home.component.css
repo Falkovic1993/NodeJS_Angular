@@ -4,7 +4,30 @@
   padding: 100px 10px;
 }
 
-.info-boxes {
+
+.info-icon{
+  height: 100px;
+  width: 100px;
+  border: 3px solid #F62D51;
+  border-radius: 1000px;
   text-align: center;
-  background-color: aqua;
+  margin: 70px auto 0;
+}
+
+.info-icon i {
+  color: #F62D51;
+  font-size: 50px;
+  line-height: 96px;
+}
+
+.info-title{
+  padding-top: 20px;
+  text-align: center;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.info-description{
+  padding-top: 10px;
+  text-align: center;
+  color: #6c747f;
 }
