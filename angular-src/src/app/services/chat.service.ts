@@ -25,7 +25,7 @@ export class ChatService {
 
   saveMessage(data){
     let headers = new Headers();
-    console.log(data)
+    //console.log(data)
     headers.append('Content-type','application/json');
     return this.http.post('http://localhost:3000/messages/savemessages', {data}, {headers:headers}).subscribe(res => res.json());
 }
@@ -39,7 +39,7 @@ export class ChatService {
 
   getUserById(id){
     let headers = new Headers();
-    console.log(id)
+    //console.log(id)
     headers.append('id', id)
     return this.http.post('http://localhost:3000/users/getuserbyid', id, {headers:headers})
     .map(res => res.json());
