@@ -8,6 +8,7 @@ import { User } from '../../entities/user';
 import { UsersEpic } from '../../users.epic';
 import { Subscription } from 'rxjs';
 import { UserActions } from '../profile/profile.action';
+import { NavbarService } from '../../services/navbar.service';
 
 @Component({
   selector: 'app-userdetails',
@@ -27,9 +28,11 @@ export class UserdetailsComponent implements OnInit {
     private flashMessage: FlashMessagesService,
     private ngRedux: NgRedux<IAppState>,
     private userActions: UserActions,
+    public nav: NavbarService
   ) { }
 
   ngOnInit() {
+    this.nav.show();
     this.authService.getUserById(this.id).subscribe(res => {
       console.log(res);
       this.user = res.user[0];

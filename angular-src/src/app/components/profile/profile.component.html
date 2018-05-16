@@ -1,59 +1,65 @@
-<div *ngIf="user">
-  <h2 id="userFirstname" class="collection-header">{{user.firstname}}</h2>
-  <ul class="collection">
-    <li class="collection-item">Firstname: {{user.firstname}}</li>
-    <li class="collection-item">Lastname: {{user.lastname}}</li>
-    <li class="collection-item">Email: {{user.email}}</li>
-    <li class="collection-item">Phone: {{user.phone}}</li>
-    <br>
-    <button id="btnUpdateUser" class="waves-effect waves-light btn" (click)="openModal()">Modal</button>
-  </ul>
+<div class="row container">
+    <h2 id="userFirstname" class="collection-header center-align">{{user.firstname}}</h2>
+  <div class="col s6">
+      <div class="card redbg">
+          <div class="card-content white-text">
+            <span class="card-title">About Me!</span>
+            <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+          </div>                  
+        </div>
+  </div>
+  <div class="col s6">
+    <div *ngIf="user">
+      <ul class="collection">
+        <li class="collection-item">Firstname: {{user.firstname}}</li>
+        <li class="collection-item">Lastname: {{user.lastname}}</li>
+        <li class="collection-item">Email: {{user.email}}</li>
+        <li class="collection-item">Phone: {{user.phone}}</li>
+      </ul>
+      <button id="btnUpdateUser" class="btn-floating btn-large waves-effect redbg" (click)="openModal()"><i class="material-icons">add</i></button>
+    </div>
+  </div>
 
-  <div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="modalActions">
+      
+    <div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="modalActions">
       <div class="modal-content">
         <h4>Update profile</h4>
-           
-    <form [formGroup]="updateUserForm" (ngSubmit)="onSubmit(updateUserForm)" class="col s12">
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="updateFirstname" [(ngModel)]="firstname" name="firstname" [formControl]="updateUserForm.controls['firstname']" type="text" class="validate">
-            <label for="register_firstname">{{user.firstname}}</label>
-            <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+        <form [formGroup]="updateUserForm" (ngSubmit)="onSubmit(updateUserForm)" class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="updateFirstname" [(ngModel)]="firstname" name="firstname" [formControl]="updateUserForm.controls['firstname']" type="text" class="validate">
+              <label for="register_firstname">{{user.firstname}}</label>
+              <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+            </div>
+            <div class="input-field col s12">
+              <input id="updateLastname" [(ngModel)]="lastname" name="lastname" [formControl]="updateUserForm.controls['lastname']" type="text" class="validate">
+              <label for="register_last_name">Last Name</label>
+            </div>
           </div>
-          <div class="input-field col s12">
-            <input id="updateLastname" [(ngModel)]="lastname" name="lastname" [formControl]="updateUserForm.controls['lastname']" type="text" class="validate">
-            <label for="register_last_name">Last Name</label>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="updatePw" [(ngModel)]="password" name="password" [formControl]="updateUserForm.controls['password']" type="password" class="validate">
+              <label for="register_password">Password</label>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="updatePw" [(ngModel)]="password" name="password" [formControl]="updateUserForm.controls['password']" type="password" class="validate">
-            <label for="register_password">Password</label>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="updateEmail" [(ngModel)]="email" name="email" [formControl]="updateUserForm.controls['email']" type="email" class="validate">
+              <label for="register_email">Email</label>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="updateEmail" [(ngModel)]="email" name="email" [formControl]="updateUserForm.controls['email']" type="email" class="validate">
-            <label for="register_email">Email</label>
-          </div>
-        </div>
-        <div class="row">
+          <div class="row">
             <div class="input-field col s12">
               <input id="updatePhone" [(ngModel)]="phone" name="phone" [formControl]="updateUserForm.controls['phone']" type="phone" class="validate">
               <label for="register_phone">Phone</label>
             </div>
           </div>
-
-        
-        <button class="waves-effect  btn-flat" (click)="closeModal()">Close</button>
-
-        <button id="userUpdated" class="modal-action modal-close waves-effect btn-flat" type="submit" name="action">Update
+          <button class="waves-effect  btn-flat" (click)="closeModal()">Close</button>
+          <button id="userUpdated" class="modal-action modal-close waves-effect btn-flat" type="submit" name="action">Update
             <i class="material-icons right">send</i>
-        </button>
-      
-      </form>
+          </button>
+        </form>
       </div>
     </div>
 
- 
 </div>

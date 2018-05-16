@@ -8,6 +8,7 @@ import {
   FacebookLoginProvider,
   GoogleLoginProvider
 } from 'angular5-social-login';
+import { NavbarService } from '../../services/navbar.service';
 
 @Component({
   selector: 'app-login',
@@ -24,13 +25,15 @@ export class LoginComponent implements OnInit {
     private authService:myAuthService,
     private router:Router,
     private flashMessage:FlashMessagesService,
-    private socialAuthService: AuthService) { }
+    private socialAuthService: AuthService,
+    public nav: NavbarService) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
       email:["", Validators.email],
       password:["", Validators.required],
     })
+    this.nav.hide();
   }
 
   onSubmit(loginForm){

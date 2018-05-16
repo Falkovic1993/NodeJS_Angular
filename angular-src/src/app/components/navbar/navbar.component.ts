@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { myAuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { NavbarService } from '../../services/navbar.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +14,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     private authService:myAuthService,
     private router:Router,
-    private flashMessage:FlashMessagesService) { }
+    private flashMessage:FlashMessagesService,
+    public nav: NavbarService) { }
 
   ngOnInit() {
   }

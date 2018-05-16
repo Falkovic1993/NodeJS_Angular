@@ -1,8 +1,8 @@
 
 
-<nav>
+<nav *ngIf="nav.visible" >
     <div class="container">
-      <a href="#" class="brand-logo">Project management</a>
+      <a href="#" class="brand-logo">Pilea</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a [routerLinkActive]="['active']" [routerLink]="['/home']">Home</a></li>
         <li *ngIf="authService.loggedIn()"><a  [routerLinkActive]="['active']" [routerLink]="['/dashboard']">Dashboard</a></li>

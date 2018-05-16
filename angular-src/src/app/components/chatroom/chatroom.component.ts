@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChatService } from '../../services/chat.service';
 import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { myAuthService } from '../../services/auth.service';
+import { NavbarService } from '../../services/navbar.service';
 
 @Component({
   selector: 'app-chatroom',
@@ -19,10 +20,12 @@ export class ChatroomComponent implements OnInit {
   constructor(
     private chat: ChatService,
     private fb: FormBuilder,
-    private myauthService: myAuthService
+    private myauthService: myAuthService,
+    public nav: NavbarService
   ) { }
 
   ngOnInit() {
+    this.nav.show();
     this.chat.getAllMessages().subscribe(res => {
       console.log('RES',res.messages)
       this.messages = res.messages

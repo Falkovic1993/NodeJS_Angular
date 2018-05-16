@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { PasswordValidator } from '../../services/PasswordValidator';
 import { ValidateCharactersService } from '../../services/validate-characters.service';
 import { Http } from '@angular/http';
+import { NavbarService } from '../../services/navbar.service';
 
 @Component({
   selector: 'app-register',
@@ -27,9 +28,11 @@ export class RegisterComponent implements OnInit {
     private authService: myAuthService,
     private router: Router,
     private cd: ChangeDetectorRef,
-    private http:Http ) { }
+    private http:Http,
+    public nav: NavbarService ) { }
 
   ngOnInit() {
+    this.nav.hide();
     this.registerForm = this.fb.group({
       firstname:['', [ValidateCharactersService.validateCharacters , Validators.required ]],
       lastname:["", [ValidateCharactersService.validateCharacters , Validators.required ]],

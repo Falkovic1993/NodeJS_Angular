@@ -50,6 +50,7 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { DetailedinformationComponent } from './components/detailedinformation/detailedinformation.component';
 import { FilterusersPipe } from './filterusers.pipe';
 import { PasswordValidator } from './services/PasswordValidator';
+import { NavbarService } from './services/navbar.service';
 
 
 
@@ -92,6 +93,7 @@ import { PasswordValidator } from './services/PasswordValidator';
   ],
   providers: [
     myAuthService,
+    NavbarService,
     AuthGuard,
     UserActions,
     UsersActions,

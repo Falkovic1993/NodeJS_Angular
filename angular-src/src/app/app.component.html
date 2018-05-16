@@ -1,16 +1,16 @@
-<div class="navbar header" [class.loggedin]="authService.loggedIn()">
+<div class="navbar header" [class.loggedin]="authService.loggedIn()" >
   <app-navbar></app-navbar>
 </div>
 
 <app-sidenav *ngIf="authService.loggedIn()"></app-sidenav>
-<div class="wrapper main " [class.loggedin]="authService.loggedIn()">
-  <flash-messages></flash-messages>
+<flash-messages></flash-messages>
+<div class="wrapper main" [class.loggedin]="authService.loggedIn()">
   <router-outlet></router-outlet>
   
 </div>
 
 
 
-<div class="footer" [class.loggedin]="authService.loggedIn()">  
+<div class="footer color" [class.loggedin]="authService.loggedIn()">  
   <app-footer></app-footer>
 </div>

@@ -6,6 +6,7 @@ import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../store/store';
 import { UsersActions } from './users-list.action';
 import { User } from '../../entities/user';
+import { NavbarService } from '../../services/navbar.service';
 
 @Component({
   selector: 'app-users-list',
@@ -21,9 +22,11 @@ export class UsersListComponent implements OnInit {
     private flashMessage: FlashMessagesService,
     private ngRedux: NgRedux<IAppState>,
     private usersActions: UsersActions,
+    public nav: NavbarService
   ) { }
 
   ngOnInit() {
+    this.nav.show();
     this.usersActions.getAllUsers();
 
     this.ngRedux.select(state => state.users).subscribe(res => {

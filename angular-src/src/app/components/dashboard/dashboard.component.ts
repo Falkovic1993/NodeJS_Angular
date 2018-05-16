@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { myAuthService } from '../../services/auth.service';
+import { NavbarService } from '../../services/navbar.service';
 
 
 @Component({
@@ -11,11 +12,12 @@ export class DashboardComponent implements OnInit {
 
   
   constructor(
-    private authService:myAuthService
+    private authService:myAuthService,
+    public nav: NavbarService
   ) { }
 
   ngOnInit() {
-    
+    this.nav.show();
   }
 
 }

@@ -8,6 +8,7 @@ import { User } from '../../entities/user';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../store/store';
 import { UserActions } from './profile.action';
+import { NavbarService } from '../../services/navbar.service';
 
 
 @Component({
@@ -36,9 +37,11 @@ export class ProfileComponent implements OnInit {
     private flashMessage: FlashMessagesService,
     private ngRedux: NgRedux<IAppState>,
     private userActions: UserActions,
+    public nav: NavbarService
   ) { }
 
   ngOnInit() {
+    this.nav.show();
     this.userActions.getUser();
   
     this.ngRedux.select(state => state.user).subscribe(res => {
