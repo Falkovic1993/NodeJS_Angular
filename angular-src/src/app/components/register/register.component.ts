@@ -81,7 +81,7 @@ fileChangeEvent(fileInput: any) {
           this.router.navigate(['/login']);
           this.authService.vertifyUser(user.email);
         } else {
-          this.flashMessage.show('There was an error', {cssClass: 'red', timeout:3000});
+          this.flashMessage.show('There was an error', {cssClass: 'redbg', timeout:3000});
           this.router.navigate(['/register']);
         } 
       })

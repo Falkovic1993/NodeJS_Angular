@@ -6,8 +6,58 @@
   background-color:#2E294E;
 }
 
+.updateProfile-wrapper{
+  width:400px;
+  height: 700px;
+}
+.profile-section{
+  width: 100%;
+  height: 100%;
+}
+
 .btnUpdateProfile{
   float:right;
   margin-right: -25px;
   margin-top: -46px;
+}
+
+.profile-section{
+  width: 400px;
+  margin: 15px auto;
+}
+
+.profile-row{
+  height: 60px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+
+.input-field{
+  margin: 5px 0px;
+}
+
+.input-field .profileInput{
+  width: calc(100% - 3rem);
+  margin-left: 3rem;
+}
+
+.input-field .extralinks{
+  font-size: 12px;
+}
+
+.profileIcon{
+  position: absolute;
+  font-size: 2rem;
+  margin-top: 20px;
+}
+
+.profileLabel{
+  color: #9e9e9e;
+    position: absolute;
+    top: 0.8rem;
+    left: 0.75rem;
+    font-size: 1rem;
+    cursor: text;
+    margin-left: 3rem;   
 }

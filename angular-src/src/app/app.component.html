@@ -3,9 +3,12 @@
 </div>
 
 <app-sidenav *ngIf="authService.loggedIn()"></app-sidenav>
-<flash-messages></flash-messages>
+
 <div class="wrapper main" [class.loggedin]="authService.loggedIn()">
-  <router-outlet></router-outlet>
+    <flash-messages></flash-messages>
+  <router-outlet>
+      
+  </router-outlet>
   
 </div>
 

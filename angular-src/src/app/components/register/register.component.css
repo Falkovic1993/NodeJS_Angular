@@ -11,6 +11,14 @@
   background: linear-gradient(to left, #f05053, #e1eec3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+.redbg{
+  background-color:#f05053;
+}
+
+.bluebg{
+  background-color:#2E294E;
+}
+
 .register-section{
   width: 400px;
   margin: 15px auto;
