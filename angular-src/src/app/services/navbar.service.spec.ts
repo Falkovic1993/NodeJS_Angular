@@ -1,4 +1,4 @@
-import { TestBed, inject } from '@angular/core/testing';
+/*import { TestBed, inject } from '@angular/core/testing';
 
 import { NavbarService } from './navbar.service';
 
@@ -13,3 +13,4 @@ describe('NavbarService', () => {
     expect(service).toBeTruthy();
   }));
 });
+*/
