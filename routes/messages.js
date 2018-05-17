@@ -7,11 +7,11 @@ const Messages = require('../models/messages');
 
 router.post('/savemessages', (req, res) => {
 	console.log('SAVE MESSAGE *********',req)
-	let userid = req.body.data.userId;
-	let firstname = req.body.data.firstname;
+	let userid = req.fields.data.userId;
+	let firstname = req.fields.data.firstname;
 	console.log(firstname);
-	let message = req.body.data.messages;
-	let date = req.body.data.date;
+	let message = req.fields.data.messages;
+	let date = req.fields.data.date;
 	Messages.saveMessage(userid, firstname , message, date);
 	return res.json({msg:'Wow'});
 });
