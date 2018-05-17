@@ -1,5 +1,4 @@
 .register-wrapper{
-  width: 100vw;
   height: 100% !important;
   background: #e1eec3;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to left, #f05053, #e1eec3);  /* Chrome 10-25, Safari 5.1-6 */
