@@ -30,6 +30,13 @@ describe('App: Users', () => {
           expect(result.length).toBe(0);
       });
 
+      it('Array with some input', () => {
+        let result = pipe.transform([this.Users], 'ri');
+        expect(result.length).toBe(1);
+    });
+
+     
+
       //...Add more tests.
     });
 });

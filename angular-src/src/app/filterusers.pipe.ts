@@ -18,8 +18,9 @@ export class FilterusersPipe implements PipeTransform {
       
       if(itemsFound && itemsFound.length > 0){
         return itemsFound
+      } else {
+        return [-1]; // to display error message (none found) in view.
       }
-      return [-1]; // to display error message (none found) in view.
     }
     return items;
   }
