@@ -11,14 +11,14 @@
       <div class="row login-row">           
             <div class="input-field col s12 center">
               <i class="material-icons loginIcon">person_outline</i>
-              <input blue id="email" [(ngModel)]="email" name="email" [formControl]="loginForm.controls['email']" type="email" class="validate loginInput">
+              <input id="email" name="email" [formControl]="loginForm.controls['email']" type="email" class="validate loginInput">
               <label class="loginLabel" for="login_email">Email</label>
             </div>
           </div>
           <div class="row login-row">
             <div class="input-field col s12 center">
               <i class="material-icons loginIcon">vpn_key</i>
-              <input id="password" [(ngModel)]="password" name="password" [formControl]="loginForm.controls['password']" type="password" class="validate loginInput">
+              <input id="password" name="password" [formControl]="loginForm.controls['password']" type="password" class="validate loginInput">
               <label class="loginLabel" for="login_password">Password</label>
             </div>
           </div>

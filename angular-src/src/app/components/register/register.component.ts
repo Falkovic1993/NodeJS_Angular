@@ -66,15 +66,16 @@ fileChangeEvent(fileInput: any) {
   onSubmit(registerForm){
     if(registerForm.valid) {
       const user = {
-        firstname: this.firstname,
-        lastname: this.lastname,
-        email: this.email,
-        phone: this.phone,
-        password: this.password,
+        firstname: registerForm.value.firstname,
+        lastname: registerForm.value.lastname,
+        email: registerForm.value.email,
+        phone: registerForm.value.phone,
+        password: registerForm.value.password,
       }
 
       console.log(user)
      // this.authService.vertifyUserSMS(user);
+     this.upload(registerForm)
       this.authService.registerUser(registerForm).subscribe(data => {
         if(data.success){
           this.flashMessage.show('You are now registered - Vertify your mail to log in!', {cssClass: 'green lighten-3', timeout:3000});

@@ -31,7 +31,7 @@ export class myAuthService {
   }
 
   registerUser(user){
-    console.log('EHEHHEHEHEE',user.get('image'))
+    //console.log('EHEHHEHEHEE',user.get('image'))
     return this.http.post('http://localhost:3000/users/register', user.value)
       .map(res => res.json());
   }
