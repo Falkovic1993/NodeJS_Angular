@@ -15,7 +15,7 @@ var multer = require('multer');
 var storage = multer.diskStorage({
 	// destination
 	destination: function (req, file, cb) {
-		cb(null, './upload/');
+		cb(null, '../public/upload/');
 	},
 	filename: function (req, file, cb) {
 		cb(null, Date.now() + file.originalname);
@@ -34,6 +34,7 @@ router.post('/getuserbyid', (req, res) => {
 });
 
 router.post('/upload', upload.array('uploads[]', 12), function (req, res) {
+	console.log(req.fields);
 	console.log('files', req.files);
 	res.send(req.files);
 });
