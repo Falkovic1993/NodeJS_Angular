@@ -1980,7 +1980,7 @@ var myAuthService = /** @class */ (function () {
     };
     myAuthService.prototype.registerUser = function (user) {
         //console.log('EHEHHEHEHEE',user.get('image'))
-        return this.http.post('users/register', user.value)
+        return this.http.post('users/register', user)
             .map(function (res) { return res.json(); });
     };
     myAuthService.prototype.authenticateUser = function (user) {

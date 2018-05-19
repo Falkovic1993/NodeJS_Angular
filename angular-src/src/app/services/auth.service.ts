@@ -32,7 +32,7 @@ export class myAuthService {
 
   registerUser(user){
     //console.log('EHEHHEHEHEE',user.get('image'))
-    return this.http.post('users/register', user.value)
+    return this.http.post('users/register', user)
       .map(res => res.json());
   }
 
