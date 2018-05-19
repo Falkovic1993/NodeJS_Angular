@@ -2,8 +2,8 @@ const mysql = require('mysql');
 
 global.db = mysql.createConnection({
     host:process.env.database_url,
-    user:"root",
-    password:"",
+    user:"b49fd81ad844de",
+    password:"a30212fd",
     database:"Nodejs_exam"
 })
 
