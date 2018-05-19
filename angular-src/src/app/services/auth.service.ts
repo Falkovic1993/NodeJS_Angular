@@ -72,9 +72,10 @@ export class myAuthService {
   getUserById(id){
     let headers = new Headers();
     console.log(id)
-    //headers.append('Content-type','application/json');
+    headers.append('Content-type','application/json');
     headers.append('id', id)
     return this.http.post('users/getuserbyid', id, {headers:headers})
+    .map(res => res.json());
   }
   
 
