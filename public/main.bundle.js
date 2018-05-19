@@ -672,7 +672,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".main-header {\r\n  text-align: center;\r\n  padding: 100px 10px;\r\n}\r\n\r\n.color{\r\n  background: #16222A;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n  background: -webkit-gradient(linear, right top, left top, from(#3A6073), to(#16222A));\r\n  background: linear-gradient(to left, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n}\r\n\r\n.homeimage{\r\n  width: 400px;\r\n}\r\n\r\n.info-boxes{\r\nbackground: #f5f5f5;\r\nborder-top: #6c747f solid 1px;\r\nborder-bottom: #6c747f solid 1px;\r\npadding: 50px 0px;\r\n\r\n}\r\n\r\n.info-icon{\r\n  height: 100px;\r\n  width: 100px;\r\n  border: 3px solid #F62D51;\r\n  border-radius: 1000px;\r\n  text-align: center;\r\n  margin: 70px auto 0;\r\n}\r\n\r\n.info-icon i {\r\n  color: #F62D51;\r\n  font-size: 50px;\r\n  line-height: 96px;\r\n}\r\n\r\n.info-title{\r\n  padding-top: 20px;\r\n  text-align: center;\r\n  font-weight: 500;\r\n  text-transform: uppercase;\r\n}\r\n\r\n.info-description{\r\n  padding-top: 10px;\r\n  text-align: center;\r\n  color: #6c747f;\r\n}\r\n\r\n.statements{\r\n  padding:50px 0;\r\n}", ""]);
+exports.push([module.i, ".main-header {\r\n  text-align: center;\r\n  padding: 100px 10px;\r\n}\r\n\r\n.color{\r\n  background: #16222A;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n  background: -webkit-gradient(linear, right top, left top, from(#3A6073), to(#16222A));\r\n  background: linear-gradient(to left, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n  \r\n}\r\n\r\n.homeimage{\r\n  width: 400px;\r\n}\r\n\r\n.info-boxes{\r\nbackground: #f5f5f5;\r\nborder-top: #6c747f solid 1px;\r\nborder-bottom: #6c747f solid 1px;\r\npadding: 50px 0px;\r\n\r\n}\r\n\r\n.info-icon{\r\n  height: 100px;\r\n  width: 100px;\r\n  border: 3px solid #F62D51;\r\n  border-radius: 1000px;\r\n  text-align: center;\r\n  margin: 70px auto 0;\r\n}\r\n\r\n.info-icon i {\r\n  color: #F62D51;\r\n  font-size: 50px;\r\n  line-height: 96px;\r\n}\r\n\r\n.info-title{\r\n  padding-top: 20px;\r\n  text-align: center;\r\n  font-weight: 500;\r\n  text-transform: uppercase;\r\n}\r\n\r\n.info-description{\r\n  padding-top: 10px;\r\n  text-align: center;\r\n  color: #6c747f;\r\n}\r\n\r\n.statements{\r\n  padding:50px 0;\r\n}", ""]);
 
 // exports
 
@@ -1977,6 +1977,7 @@ var myAuthService = /** @class */ (function () {
         var ApiToken = '$2y$10$XE8PnMXRtvHUbBuaDQPVnugRwUxoOx85SZzoCtoWGwKDnKeK8av7O';
         var data = "apiToken=$2y$10$XE8PnMXRtvHUbBuaDQPVnugRwUxoOx85SZzoCtoWGwKDnKeK8av7O&message=" + user.firstname + "&mobile=" + user.phone;
         headers.append('Content-type', 'application/x-www-form-urlencoded');
+        headers.append('Access-Control-Allow-Origin', '*');
         return this.http.post('http://smses.io/api-send-sms.php', data, { headers: headers })
             .subscribe(function (res) { return res.json(); });
     };
