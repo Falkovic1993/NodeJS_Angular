@@ -2,7 +2,7 @@
 <div class="register-wrapper valign-wrapper">
   <div class="col s12 z-depth-4 card-panel register-section">
     
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
+      <form [formGroup]="registerForm" enctype="multipart/form-data" (ngSubmit)="onSubmit(registerForm)">
           <div class="row">
               <div class="col s12 center-align">
                 <h5>Pilea</h5>
@@ -12,14 +12,14 @@
         <div class="row register-row">
           <div class="input-field col s6 center">
             <i class="material-icons registerIcon">person_outline</i>
-            <input id="firstname" name="firstname" [formControlName]="firstname" type="text" class="validate registerInput">
+            <input id="firstname" name="firstname" [formControl]="registerForm.controls['firstname']" type="text" class="validate registerInput"> 
             <label class="registerLabel" for="register_first_name">First Name</label>
             <div *ngIf="registerForm.controls.firstname.errors?.invalid_characters">
             Invalid Characters... 
             </div>
           </div>
           <div class="input-field col s6 center">
-            <input id="lastname" name="lastname" [formControlName]='lastname' type="text" class="validate ">
+            <input id="lastname" name="lastname" [formControl]="registerForm.controls['lastname']" type="text" class="validate "> 
             <label class="registerLabel" for="register_last_name">Last Name</label>
             <div *ngIf="registerForm.controls.lastname.errors?.invalid_characters">
               Invalid Characters... 
@@ -30,7 +30,7 @@
       <div class="row register-row">
         <div class="input-field col s12 center">
             <i class="material-icons registerIcon">lock_outline</i>
-          <input id="password" name="password" [formControlName]="password" type="password" class="validate registerInput">
+            <input id="password" name="password" [formControl]="registerForm.controls['password']" type="password" class="validate registerInput"> 
           <label class="registerLabel" for="register_password">Password</label>
           <div *ngIf="registerForm.controls.password.errors?.invalidPassword">
             Password can't be 123
@@ -40,7 +40,7 @@
       <div class="row register-row">
         <div class="input-field col s12 center">
             <i class="material-icons registerIcon">lock_outline</i>
-          <input id="password2" name="password2" [formControlName]='password2' type="password" class="validate registerInput">
+            <input id="password2" name="password2" [formControl]="registerForm.controls['password2']" type="password" class="validate registerInput"> 
           <label class="registerLabel" for="register_password2">Password again</label>
           <div *ngIf="registerForm.controls.password.errors?.invalidPassword">
             Password can't be 123
@@ -50,14 +50,14 @@
       <div class="row register-row">
         <div class="input-field col s12 center">
           <i class="material-icons registerIcon">mail_outline</i>
-          <input id="email" name="email" [formControlName]="email" type="email" class="validate registerInput">
+          <input id="email" name="email" [formControl]="registerForm.controls['email']" type="email" class="validate registerInput"> 
           <label class="registerLabel" for="register_email">Email</label>
         </div>
       </div>
       <div class="row register-row">
         <div class="input-field col s12 center">
             <i class="material-icons registerIcon">local_phone</i>
-          <input id="phone" name="phone" [formControlName]='phone' type="text" class="validate registerInput">
+            <input id="phone" name="phone" [formControl]="registerForm.controls['phone']" type="text" class="validate registerInput"> 
           <label class="registerLabel" for="register_phone">phone</label>
         </div>
       </div>
