@@ -18,6 +18,7 @@ module.exports.addUser = function(newUser, callback){
 };
 
 module.exports.getUserById = function(id, callback) {
+	console.log('DB',id);
 	let stmt = 'SELECT * FROM USERS WHERE id LIKE ?';
 	global.db.query(stmt, id, (err, user) => {
 		return callback(false, user);

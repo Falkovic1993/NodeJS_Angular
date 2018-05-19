@@ -26,7 +26,7 @@ var upload = multer({ storage: storage });
 
 
 router.post('/getuserbyid', (req, res) => {
-	console.log(req.headers.id)
+	console.log('USER ID',req.headers.id)
 	let userId = req.headers.id;
 	User.getUserById(userId, (err, user) =>{
 		return res.json(user);
