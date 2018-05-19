@@ -1,7 +1,7 @@
 const mysql = require('mysql');
 
 global.db = mysql.createConnection({
-    host:process.env.database_url,
+    host:'mysql://b09cb87df8ff2a:61e9557f@us-cdbr-iron-east-04.cleardb.net/heroku_4d5dd86fbee2f56?reconnect=true',
     user:"b49fd81ad844de",
     password:"a30212fd",
     database:"Nodejs_exam"
