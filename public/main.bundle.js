@@ -1096,11 +1096,11 @@ var ProfileComponent = /** @class */ (function () {
         if (updateUserForm.valid) {
             var newUser = {
                 id: this.user.id,
-                firstname: this.firstname,
-                lastname: this.lastname,
-                password: this.password,
-                email: this.email,
-                phone: this.phone,
+                firstname: updateUserForm.value.firstname,
+                lastname: updateUserForm.value.lastname,
+                password: updateUserForm.value.password,
+                email: updateUserForm.value.email,
+                phone: updateUserForm.value.phone,
             };
             this.userActions.updateUser(newUser);
             /*.subscribe(data => {
