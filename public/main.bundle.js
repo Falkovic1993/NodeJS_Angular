@@ -1603,7 +1603,7 @@ var UserdetailsComponent = /** @class */ (function () {
         this.nav.show();
         this.authService.getUserById(this.id).subscribe(function (res) {
             console.log(res);
-            _this.user = res.user[0];
+            _this.user = res[0];
             console.log(_this.user);
         });
     };
@@ -2017,8 +2017,7 @@ var myAuthService = /** @class */ (function () {
         console.log(id);
         //headers.append('Content-type','application/json');
         headers.append('id', id);
-        return this.http.post('users/getuserbyid', id, { headers: headers })
-            .map(function (res) { return res.json(); });
+        return this.http.post('users/getuserbyid', id, { headers: headers });
     };
     myAuthService.prototype.getAllUsers = function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();

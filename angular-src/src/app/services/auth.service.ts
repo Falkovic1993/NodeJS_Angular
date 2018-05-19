@@ -75,7 +75,6 @@ export class myAuthService {
     //headers.append('Content-type','application/json');
     headers.append('id', id)
     return this.http.post('users/getuserbyid', id, {headers:headers})
-    .map(res => res.json());
   }
   
 

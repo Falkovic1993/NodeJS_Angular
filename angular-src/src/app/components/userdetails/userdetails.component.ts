@@ -35,7 +35,7 @@ export class UserdetailsComponent implements OnInit {
     this.nav.show();
     this.authService.getUserById(this.id).subscribe(res => {
       console.log(res);
-      this.user = res.user[0];
+      this.user = res[0];
       console.log(this.user)
     })
     
