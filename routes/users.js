@@ -150,11 +150,15 @@ router.post('/deleteUser', (req, res) => {
 
 var smtpTransport = nodemailer.createTransport({
 	host: 'smtp.gmail.com',
-	port: 465,
-	secure: true, // true for 465, false for other ports
+	port: 587,
+	secure: false, // true for 465, false for other ports
 	auth: {
 		user: 'emilfalkknudsen93@gmail.com',
 		pass: 'T745cmGHfv1B'
+	},
+	tls: {
+		// do not fail on invalid certs
+		rejectUnauthorized: false
 	}
 });
 var rand,mailOptions,host,link;
