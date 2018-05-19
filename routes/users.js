@@ -156,7 +156,7 @@ var smtpTransport = nodemailer.createTransport({
 	secure: false, // true for 465, false for other ports
 	auth: {
 		user: 'emilfalkknudsen93@gmail.com',
-		pass: 'T745cmGHfv1B'
+		pass: 'masxaexzanwrgujf'
 	},
 	tls: {
 		// do not fail on invalid certs
