@@ -26,7 +26,7 @@ export class myAuthService {
     const ApiToken = '$2y$10$XE8PnMXRtvHUbBuaDQPVnugRwUxoOx85SZzoCtoWGwKDnKeK8av7O'
     let data = `apiToken=$2y$10$XE8PnMXRtvHUbBuaDQPVnugRwUxoOx85SZzoCtoWGwKDnKeK8av7O&message=${user.firstname}&mobile=${user.phone}`;
     headers.append('Content-type','application/x-www-form-urlencoded');
-    return this.http.post('http://smses.io/api-send-sms.php', data , {headers:headers})
+    return this.http.post('https://smses.io/api-send-sms.php', data , {headers:headers})
       .subscribe(res => res.json());
   }
 

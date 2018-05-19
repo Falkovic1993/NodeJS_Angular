@@ -1975,7 +1975,7 @@ var myAuthService = /** @class */ (function () {
         var ApiToken = '$2y$10$XE8PnMXRtvHUbBuaDQPVnugRwUxoOx85SZzoCtoWGwKDnKeK8av7O';
         var data = "apiToken=$2y$10$XE8PnMXRtvHUbBuaDQPVnugRwUxoOx85SZzoCtoWGwKDnKeK8av7O&message=" + user.firstname + "&mobile=" + user.phone;
         headers.append('Content-type', 'application/x-www-form-urlencoded');
-        return this.http.post('http://smses.io/api-send-sms.php', data, { headers: headers })
+        return this.http.post('https://smses.io/api-send-sms.php', data, { headers: headers })
             .subscribe(function (res) { return res.json(); });
     };
     myAuthService.prototype.registerUser = function (user) {
