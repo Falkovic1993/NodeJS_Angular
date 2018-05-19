@@ -86,6 +86,9 @@ io.on('connection', (socket) => {
 });
 
 
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname, 'public/index.html'));
+})
 
 http.listen(port, ( err ) => {
 	if(err) throw err;

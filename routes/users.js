@@ -200,7 +200,7 @@ router.get('/verify', function(req,res){
 			console.log('email is verified');
 			//res.end('<h1>Email '+mailOptions.to+' is been Successfully verified');
 			return res.redirect(url.format({
-				pathname:'http://localhost:4200/login',
+				pathname:'/login',
 			}));
 		}
 		else
