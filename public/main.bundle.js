@@ -1093,6 +1093,7 @@ var ProfileComponent = /** @class */ (function () {
         this.modalActions.emit({ action: "modal", params: ['close'] });
     };
     ProfileComponent.prototype.onSubmit = function (updateUserForm) {
+        console.log(updateUserForm);
         if (updateUserForm.valid) {
             console.log(updateUserForm.value);
             var newUser = {
