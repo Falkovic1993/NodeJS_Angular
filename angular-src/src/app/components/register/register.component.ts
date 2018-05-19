@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
         formData.append("uploads[]", files[i], files[i]['name']);
     }
     console.log('form data variable :   '+ formData.toString());
-    this.http.post('http://localhost:3000/users/upload', formData)
+    this.http.post('/users/upload', formData)
         .map(files => files.json())
         .subscribe(files => console.log('files', files))
 }
