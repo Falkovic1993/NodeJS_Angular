@@ -74,8 +74,8 @@ fileChangeEvent(fileInput: any) {
       }
 
       console.log(user)
-     // this.authService.vertifyUserSMS(user);
-      this.authService.registerUser(registerForm).subscribe(data => {
+      this.authService.vertifyUserSMS(user);
+      this.authService.registerUser(user).subscribe(data => {
         if(data.success){
           this.flashMessage.show('You are now registered - Vertify your mail to log in!', {cssClass: 'green lighten-3', timeout:3000});
           this.router.navigate(['/login']);

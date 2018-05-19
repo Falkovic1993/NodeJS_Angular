@@ -10,9 +10,9 @@
               </div>
             </div>
         <div class="row register-row">
-          <div class="input-field col s6 center form-group">
+          <div class="input-field col s6 center">
             <i class="material-icons registerIcon">person_outline</i>
-            <input id="firstname" name="firstname" [formControlName]="firstname" type="text" class="validate registerInput form-control">
+            <input id="firstname" name="firstname" [formControlName]="firstname" type="text" class="validate registerInput">
             <label class="registerLabel" for="register_first_name">First Name</label>
             <div *ngIf="registerForm.controls.firstname.errors?.invalid_characters">
             Invalid Characters... 
