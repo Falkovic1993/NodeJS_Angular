@@ -26,7 +26,7 @@ var upload = multer({ storage: storage });
 
 
 router.post('/getuserbyid', (req, res) => {
-	
+	console.log(req.headers.id)
 	let userId = req.headers.id;
 	User.getUserById(userId, (err, user) =>{
 		return res.json({user});
@@ -128,6 +128,7 @@ router.post('/updateUser', ( req , res ) => {
 
 // profile 
 router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res) => {
+	console.log(req.user)
 	return res.json({user: req.user });
 });
 
