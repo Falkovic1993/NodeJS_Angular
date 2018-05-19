@@ -1,10 +1,10 @@
 const mysql = require('mysql');
 
 global.db = mysql.createConnection({
-    host:'us-cdbr-iron-east-04.cleardb.net',
-    user:"b09cb87df8ff2a",
-    password:"61e9557f",
-    database:"Nodejs_exam"
+    host:'emilfk.dk.mysql',
+    user:"emilfk_dk",
+    password:"BenEtPjhKBUWzi46TSwTamoA",
+    database:"emilfk_dk"
 })
 
 //mysql://b09cb87df8ff2a:61e9557f@us-cdbr-iron-east-04.cleardb.net/heroku_4d5dd86fbee2f56?reconnect=true
