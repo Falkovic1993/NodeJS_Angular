@@ -1094,6 +1094,7 @@ var ProfileComponent = /** @class */ (function () {
     };
     ProfileComponent.prototype.onSubmit = function (updateUserForm) {
         if (updateUserForm.valid) {
+            console.log(updateUserForm.value);
             var newUser = {
                 id: this.user.id,
                 firstname: updateUserForm.value.firstname,

@@ -68,6 +68,7 @@ export class ProfileComponent implements OnInit {
 
   onSubmit(updateUserForm){
     if(updateUserForm.valid){
+      console.log(updateUserForm.value)
       const newUser  = {
         id: this.user.id,
         firstname: updateUserForm.value.firstname,
