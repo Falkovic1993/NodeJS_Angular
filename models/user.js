@@ -19,12 +19,12 @@ module.exports.addUser = function(newUser, callback){
 
 module.exports.getUserById = function(id, callback) {
 	console.log('DB',id);
-	let stmt = 'SELECT * FROM USERS WHERE id = ?';
+	let stmt = 'SELECT * FROM users WHERE id = ?';
 	global.db.query(stmt, id, (err, user) => {
 		if(err){
-			console.log(err)
+			console.log(err);
 		} else {
-			console.log('user get back' , user)
+			console.log('user get back' , user);
 			return callback(false, user);
 
 		}
@@ -40,7 +40,7 @@ module.exports.getUserByUserEmail = function(email, callback){
 
 module.exports.activateUserAccount = function(mail, callback){
 	let stmt = 'UPDATE users SET isActive = ? WHERE email LIKE ?';
-	let data = [true, mail]
+	let data = [true, mail];
 	global.db.query(stmt, data, (err, user) => {
 		//console.log('USER INFO',user);
 	}); 
