@@ -21,6 +21,7 @@ module.exports.getUserById = function(id, callback) {
 	console.log('DB',id);
 	let stmt = 'SELECT * FROM USERS WHERE id LIKE ?';
 	global.db.query(stmt, id, (err, user) => {
+		console.log('user get back' , user)
 		return callback(false, user);
 	});
 };

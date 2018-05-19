@@ -29,6 +29,7 @@ router.post('/getuserbyid', (req, res) => {
 	console.log('USER ID',req.headers.id)
 	let userId = req.headers.id;
 	User.getUserById(userId, (err, user) =>{
+		console.log('uuser',user)
 		return res.json(user);
 	});
 });
