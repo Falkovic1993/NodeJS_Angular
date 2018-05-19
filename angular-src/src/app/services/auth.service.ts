@@ -15,7 +15,7 @@ export class myAuthService {
 
   vertifyUser(to){
     console.log('Email:',to)
-    return this.http.post('http://localhost:3000/users/send', {to:to}).subscribe(function(data) {
+    return this.http.post('users/send', {to:to}).subscribe(function(data) {
       if(data)
       console.log(data)
     })
@@ -32,14 +32,14 @@ export class myAuthService {
 
   registerUser(user){
     //console.log('EHEHHEHEHEE',user.get('image'))
-    return this.http.post('http://localhost:3000/users/register', user.value)
+    return this.http.post('users/register', user.value)
       .map(res => res.json());
   }
 
   authenticateUser(user){
     let headers = new Headers();
     headers.append('Content-type','application/json');
-    return this.http.post('http://localhost:3000/users/authenticate', user, {headers:headers})
+    return this.http.post('users/authenticate', user, {headers:headers})
       .map(res => res.json());
   }
 
@@ -47,7 +47,7 @@ export class myAuthService {
     let headers = new Headers();
     console.log(user)
     headers.append('Content-type','application/json');
-    return this.http.post('http://localhost:3000/users/updateUser', user, {headers:headers})
+    return this.http.post('users/updateUser', user, {headers:headers})
       .map(res => res.json());
   }
 
@@ -56,7 +56,7 @@ export class myAuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken)
     headers.append('Content-type','application/json');
-    return this.http.get('http://localhost:3000/users/profile', {headers:headers})
+    return this.http.get('users/profile', {headers:headers})
       .map(res => res.json());
   }
 
@@ -65,7 +65,7 @@ export class myAuthService {
     console.log(id)
     headers.append('Content-type','application/json');
     headers.append('id', id)
-    return this.http.post('http://localhost:3000/users/deleteUser', id, {headers:headers})
+    return this.http.post('users/deleteUser', id, {headers:headers})
     .map(res => res.json());
   }
 
@@ -74,7 +74,7 @@ export class myAuthService {
     console.log(id)
     headers.append('Content-type','application/json');
     headers.append('id', id)
-    return this.http.post('http://localhost:3000/users/getuserbyid', id, {headers:headers})
+    return this.http.post('users/getuserbyid', id, {headers:headers})
     .map(res => res.json());
   }
   
@@ -82,7 +82,7 @@ export class myAuthService {
   getAllUsers(){
     let headers = new Headers();
     headers.append('Content-type','application/json');
-    return this.http.get('http://localhost:3000/users/getAllUsers', {headers:headers})
+    return this.http.get('users/getAllUsers', {headers:headers})
     .map(res => res.json());
   }
 

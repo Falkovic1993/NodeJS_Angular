@@ -27,13 +27,13 @@ export class ChatService {
     let headers = new Headers();
     //console.log(data)
     headers.append('Content-type','application/json');
-    return this.http.post('http://localhost:3000/messages/savemessages', {data}, {headers:headers}).subscribe(res => res.json());
+    return this.http.post('messages/savemessages', {data}, {headers:headers}).subscribe(res => res.json());
 }
 
   getAllMessages(){
     let headers = new Headers();
     headers.append('Content-type','application/json');
-    return this.http.get('http://localhost:3000/messages/getallmessages')
+    return this.http.get('messages/getallmessages')
     .map(res => res.json());
   };
 
@@ -41,7 +41,7 @@ export class ChatService {
     let headers = new Headers();
     //console.log(id)
     headers.append('id', id)
-    return this.http.post('http://localhost:3000/users/getuserbyid', id, {headers:headers})
+    return this.http.post('users/getuserbyid', id, {headers:headers})
     .map(res => res.json());
   }
 

@@ -12,7 +12,7 @@ var formidable = require('formidable');
 var path = require('path');
 
 
-const port = 3000;
+const port = process.env.port || 8080;
 const users = require('./routes/users');
 const messages = require('./routes/messages');
 
@@ -24,7 +24,7 @@ app.use(function (req, res, next) {
 	next();
 });
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname + '/public')));
 
 
 
