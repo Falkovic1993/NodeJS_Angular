@@ -143,7 +143,7 @@ export class AppModule {
       [
         {
           id: FacebookLoginProvider.PROVIDER_ID,
-          provider: new FacebookLoginProvider("Your-Facebook-app-id")
+          provider: new FacebookLoginProvider("630576007294206")
         },
         {
           id: GoogleLoginProvider.PROVIDER_ID,

@@ -355,7 +355,7 @@ function getAuthServiceConfigs() {
     var config = new __WEBPACK_IMPORTED_MODULE_33_angular5_social_login__["AuthServiceConfig"]([
         {
             id: __WEBPACK_IMPORTED_MODULE_33_angular5_social_login__["FacebookLoginProvider"].PROVIDER_ID,
-            provider: new __WEBPACK_IMPORTED_MODULE_33_angular5_social_login__["FacebookLoginProvider"]("Your-Facebook-app-id")
+            provider: new __WEBPACK_IMPORTED_MODULE_33_angular5_social_login__["FacebookLoginProvider"]("630576007294206")
         },
         {
             id: __WEBPACK_IMPORTED_MODULE_33_angular5_social_login__["GoogleLoginProvider"].PROVIDER_ID,
