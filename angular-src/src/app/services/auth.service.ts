@@ -11,7 +11,12 @@ export class myAuthService {
 
   constructor(private http:Http ) { }
 
-  
+  uploadImage(profileImage){
+    let headers = new Headers();
+    headers.append('Content-type','multipart/form-data');
+    return this.http.post('users/upload', profileImage, {headers:headers})
+      .map(res => res.json());  
+  }
 
   vertifyUser(to){
     console.log('Email:',to)

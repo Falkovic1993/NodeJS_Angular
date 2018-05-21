@@ -92,6 +92,7 @@ export class ProfileComponent implements OnInit {
 
   uploadImage(profileForm){
     console.log(profileForm)
+    this.authService.uploadImage(profileForm).subscribe(data => console.log(data));
     console.log(profileForm.value)
   }
 }

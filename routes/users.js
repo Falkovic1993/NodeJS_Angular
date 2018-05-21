@@ -32,6 +32,7 @@ router.post('/getuserbyid', (req, res) => {
 });
 
 router.post('/upload', (req, res) => {
+	console.log('yayayyay');
 	upload(req, res, (err) => {
 		if(err){
 			console.log(err);
