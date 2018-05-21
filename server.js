@@ -10,7 +10,7 @@ let io = require('socket.io')(http);
 //const formidable = require('express-formidable');
 var formidable = require('formidable');
 var path = require('path');
-
+var multer = require('multer');
 
 const port = process.env.PORT || 8080;
 const users = require('./routes/users');
@@ -32,6 +32,24 @@ app.use(express.static(path.join(__dirname + '/public')));
 
 //Middleware Formidable
 //app.use(formidable());
+
+
+var DIR = './uploads/';
+var upload = multer({dest: DIR});
+
+
+app.use(multer({
+	dest: DIR,
+	rename: function (fieldname, filename) {
+		return filename + Date.now();
+	},
+	onFileUploadStart: function (file) {
+		console.log(file.originalname + ' is starting ...');
+	},
+	onFileUploadComplete: function (file) {
+		console.log(file.fieldname + ' uploaded to  ' + file.path);
+	}
+}));
 
 
 app.use(function (req, res, next) {

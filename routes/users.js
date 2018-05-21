@@ -5,29 +5,14 @@ const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const nodemailer = require('nodemailer');
 const url = require('url');
-var multer = require('multer');
+
 const path = require('path');
 var fs = require('fs');
 
 
 //const formidable = require('express-formidable');
 //router.use(formidable());
-var DIR = './uploads/';
-var upload = multer({dest: DIR});
 
-
-router.use(multer({
-	dest: DIR,
-	rename: function (fieldname, filename) {
-		return filename + Date.now();
-	},
-	onFileUploadStart: function (file) {
-		console.log(file.originalname + ' is starting ...');
-	},
-	onFileUploadComplete: function (file) {
-		console.log(file.fieldname + ' uploaded to  ' + file.path);
-	}
-}));
 
 router.post('/upload', function (req, res) {
 	upload(req, res, function (err) {
