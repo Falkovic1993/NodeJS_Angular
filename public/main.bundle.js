@@ -1959,7 +1959,6 @@ var myAuthService = /** @class */ (function () {
     }
     myAuthService.prototype.uploadImage = function (profileImage) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
-        headers.append('Content-type', 'multipart/form-data');
         return this.http.post('users/upload', profileImage, { headers: headers })
             .map(function (res) { return res.json(); });
     };

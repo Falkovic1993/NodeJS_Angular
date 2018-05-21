@@ -13,7 +13,6 @@ export class myAuthService {
 
   uploadImage(profileImage){
     let headers = new Headers();
-    headers.append('Content-type','multipart/form-data');
     return this.http.post('users/upload', profileImage, {headers:headers})
       .map(res => res.json());  
   }
