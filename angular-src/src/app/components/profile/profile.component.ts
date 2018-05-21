@@ -80,22 +80,11 @@ export class ProfileComponent implements OnInit {
       }
       
       this.userActions.updateUser(newUser)
+    } 
+  }
 
-      /*.subscribe(data => {
-        if(data.success){
-          this.flashMessage.show('You user has been updated', {cssClass: 'green lighten-3', timeout:3000});
-          this.router.navigate(['/profile']);
-        } else {
-          this.flashMessage.show('There was an error', {cssClass: 'red', timeout:3000});
-          this.router.navigate(['/profile']);
-        } 
-      })
-      //this.authService.updateUser(newUser).subscribe(data => {
-        
-      } else {
-        console.log('error')
-      }
-      
-    }*/
-} 
-  }}
+  uploadImage(profileForm){
+    console.log(profileForm)
+    console.log(profileForm.value)
+  }
+}
