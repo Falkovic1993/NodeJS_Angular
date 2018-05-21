@@ -39,6 +39,7 @@ router.post('/upload', (req, res) => {
 			console.log(err);
 		}else {
 			console.log(req.file);
+			res.json({msg:'worked!'})
 		}
 	})
 });
