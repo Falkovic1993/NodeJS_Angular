@@ -15,6 +15,14 @@ var fs = require('fs');
 var DIR = './uploads/';
 var upload = multer({dest: DIR});
 
+router.use(function (req, res, next) {
+	res.setHeader('Access-Control-Allow-Origin', 'http://valor-software.github.io');
+	res.setHeader('Access-Control-Allow-Methods', 'POST');
+	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+	res.setHeader('Access-Control-Allow-Credentials', true);
+	next();
+});
+
 router.use(multer({
 	dest: DIR,
 	rename: function (fieldname, filename) {
