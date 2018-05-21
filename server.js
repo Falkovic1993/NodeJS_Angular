@@ -10,7 +10,6 @@ let io = require('socket.io')(http);
 //const formidable = require('express-formidable');
 var formidable = require('formidable');
 var path = require('path');
-var multer = require('multer');
 
 const port = process.env.PORT || 8080;
 const users = require('./routes/users');
@@ -34,33 +33,9 @@ app.use(express.static(path.join(__dirname + '/public')));
 //app.use(formidable());
 
 
-var DIR = './uploads/';
-var upload = multer({dest: DIR});
 
 
-app.use(multer({
-	dest: DIR,
-	rename: function (fieldname, filename) {
-		return filename + Date.now();
-	},
-	onFileUploadStart: function (file) {
-		console.log(file.originalname + ' is starting ...');
-	},
-	onFileUploadComplete: function (file) {
-		console.log(file.fieldname + ' uploaded to  ' + file.path);
-	}
-}));
-
-
-app.use(function (req, res, next) {
-	res.setHeader('Access-Control-Allow-Origin', 'http://valor-software.github.io');
-	res.setHeader('Access-Control-Allow-Methods', 'POST');
-	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-	res.setHeader('Access-Control-Allow-Credentials', true);
-	next();
-});
-
-
+/*
 app.use(function (req, res, next) {
 	var form = new formidable.IncomingForm({
 		encoding: 'utf-8',
@@ -74,7 +49,7 @@ app.use(function (req, res, next) {
 		next();
 	});
 });
-
+*/
 
 
 

@@ -1,18 +1,40 @@
 const express = require('express');
 const router = express.Router();
+const app = express();
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const nodemailer = require('nodemailer');
 const url = require('url');
-
+var multer = require('multer');
 const path = require('path');
 var fs = require('fs');
 
 
-//const formidable = require('express-formidable');
-//router.use(formidable());
 
+var DIR = './uploads/';
+var upload = multer({dest: DIR});
+
+app.use(function (req, res, next) {
+	res.setHeader('Access-Control-Allow-Origin', 'http://valor-software.github.io');
+	res.setHeader('Access-Control-Allow-Methods', 'POST');
+	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+	res.setHeader('Access-Control-Allow-Credentials', true);
+	next();
+});
+ 
+app.use(multer({
+	dest: DIR,
+	rename: function (fieldname, filename) {
+		return filename + Date.now();
+	},
+	onFileUploadStart: function (file) {
+		console.log(file.originalname + ' is starting ...');
+	},
+	onFileUploadComplete: function (file) {
+		console.log(file.fieldname + ' uploaded to  ' + file.path);
+	}
+}));
 
 router.post('/upload', function (req, res) {
 	upload(req, res, function (err) {
@@ -25,16 +47,14 @@ router.post('/upload', function (req, res) {
 });
 
 
-
-
-router.post('/upload', (req, res) => {
-	console.log('yayayyay');
-	console.log(req);
-	console.log(req.file);
-	return res.json({msg:'worked!'});
-		
+router.post('/getuserbyid', (req, res) => {
+	//console.log('USER ID',req.headers.id)
+	let userId = req.headers.id;
+	User.getUserById(userId, (err, user) =>{
+		//console.log('uuser',user)
+		return res.json({user});
+	});
 });
-
 
 
 router.post('/register', (req, res) => {
