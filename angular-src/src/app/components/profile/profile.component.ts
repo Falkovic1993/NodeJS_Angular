@@ -33,18 +33,6 @@ export class ProfileComponent implements OnInit {
   profile: User;
   name:string;
   phone:number;
-  public uploader:FileUploader = new FileUploader({url: URL});
-
-  public hasBaseDropZoneOver:boolean = false;
-  public hasAnotherDropZoneOver:boolean = false;
-
-  public fileOverBase(e:any):void {
-    this.hasBaseDropZoneOver = e;
-  }
-
-  public fileOverAnother(e:any):void {
-    this.hasAnotherDropZoneOver = e;
-  }
  
   
   
@@ -114,7 +102,7 @@ export class ProfileComponent implements OnInit {
   
   onUpload(){
     const fd = new FormData();
-    fd.append('image', this.selectedFile, this.selectedFile.name)
+    fd.append('photo', this.selectedFile, this.selectedFile.name)
     return this.http.post('/upload', fd).subscribe(res => console.log(res))
   }
 
