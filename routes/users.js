@@ -6,6 +6,7 @@ const passport = require('passport');
 const nodemailer = require('nodemailer');
 const url = require('url');
 var multer = require('multer');
+const path = require('path');
 
 
 //const formidable = require('express-formidable');
