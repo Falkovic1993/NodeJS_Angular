@@ -11,6 +11,11 @@ let io = require('socket.io')(http);
 var formidable = require('formidable');
 var path = require('path');
 var multer = require('multer');
+var upload = multer({ dest: 'upload/'});
+var fs = require('fs');
+
+
+
 
 const port = process.env.PORT || 8080;
 const users = require('./routes/users');
@@ -28,27 +33,33 @@ app.use(function (req, res, next) {
 */
 
 
+var type = upload.single('photo');
+
+app.post('/upload', type, function (req,res) {
+
+	/** When using the "single"
+      data come in "req.file" regardless of the attribute "name". **/
+	var tmp_path = req.file.path;
+
+	/** The original name of the uploaded file
+      stored in the variable "originalname". **/
+	var target_path = 'uploads/' + req.file.originalname;
+
+	/** A better way to copy the uploaded file. **/
+	var src = fs.createReadStream(tmp_path);
+	var dest = fs.createWriteStream(target_path);
+	src.pipe(dest);
+	src.on('end', function() { res.render('complete'); });
+	src.on('error', function(err) { res.render('error'); });
+
+});
 
 
  
 
  
-app.use(function (req, res, next) {
-	res.setHeader('Access-Control-Allow-Origin', 'http://valor-software.github.io');
-	res.setHeader('Access-Control-Allow-Methods', 'POST');
-	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-	res.setHeader('Access-Control-Allow-Credentials', true);
-	next();
-});
-app.use(multer({dest:'../tmp/images/'}).single('photo'));
 
 
-app.post('/upload', function (req, res) {
-
-	console.log(req.files);
-	
-	
-});
 
 
 
