@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
   modalActions = new EventEmitter<string|MaterializeAction>();
   updateUserForm: FormGroup;
   firstname: string;
+  profileForm: FormGroup;
   lastname:string;
   password:string;
   email:string;
@@ -56,6 +57,8 @@ export class ProfileComponent implements OnInit {
       email:["", Validators.email],
       phone:["", Validators.required],
     })
+
+
 
     
   }
