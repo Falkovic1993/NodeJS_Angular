@@ -8,21 +8,18 @@ const url = require('url');
 var multer = require('multer');
 
 
-
-
 //const formidable = require('express-formidable');
 //router.use(formidable());
-var storage = multer.diskStorage({
-	// destination
-	destination: function (req, file, cb) {
-		cb(null, '../public/upload/');
-	},
-	filename: function (req, file, cb) {
-		cb(null, Date.now() + file.originalname);
+
+
+const storage = multer.diskStorage({
+	destination: '../public/upload/',
+	filename: function(req, file, cb){
+		cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
 	}
 });
 
-var upload = multer({ storage: storage });
+const upload = multer({ storage: storage }).single('profile_img');
 
 
 router.post('/getuserbyid', (req, res) => {
@@ -34,10 +31,14 @@ router.post('/getuserbyid', (req, res) => {
 	});
 });
 
-router.post('/upload', upload.array('uploads[]', 12), function (req, res) {
-	console.log(req.fields);
-	console.log('files', req.files);
-	res.send(req.files);
+router.post('/upload', (req, res) => {
+	upload(req, res, (err) => {
+		if(err){
+			console.log(err);
+		}else {
+			console.log(req.file);
+		}
+	})
 });
 
 
