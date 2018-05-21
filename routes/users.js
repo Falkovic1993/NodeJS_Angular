@@ -6,25 +6,14 @@ const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const nodemailer = require('nodemailer');
 const url = require('url');
-var multer = require('multer');
+var multer  = require('multer');
+
 const path = require('path');
 var fs = require('fs');
 
 
-
-var DIR = './uploads/';
-var upload = multer({dest: DIR});
-
-app.use(function (req, res, next) {
-	res.setHeader('Access-Control-Allow-Origin', 'http://valor-software.github.io');
-	res.setHeader('Access-Control-Allow-Methods', 'POST');
-	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-	res.setHeader('Access-Control-Allow-Credentials', true);
-	next();
-});
- 
 app.use(multer({
-	dest: DIR,
+	dest:'../tmp/uploads/',
 	rename: function (fieldname, filename) {
 		return filename + Date.now();
 	},
