@@ -7,38 +7,47 @@ const nodemailer = require('nodemailer');
 const url = require('url');
 var multer = require('multer');
 const path = require('path');
+var fs = require('fs');
 
 
 //const formidable = require('express-formidable');
 //router.use(formidable());
+var DIR = './uploads/';
+var upload = multer({dest: DIR});
 
-
-const storage = multer.diskStorage({
-	destination: '/tmp/images/',
-	filename: function(req, file, cb){
-		cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+router.use(multer({
+	dest: DIR,
+	rename: function (fieldname, filename) {
+		return filename + Date.now();
+	},
+	onFileUploadStart: function (file) {
+		console.log(file.originalname + ' is starting ...');
+	},
+	onFileUploadComplete: function (file) {
+		console.log(file.fieldname + ' uploaded to  ' + file.path);
 	}
-});
+}));
 
-const upload = multer({ storage: storage });
-
-
-router.post('/getuserbyid', (req, res) => {
-	//console.log('USER ID',req.headers.id)
-	let userId = req.headers.id;
-	User.getUserById(userId, (err, user) =>{
-		//console.log('uuser',user)
-		return res.json({user});
+router.post('/upload', function (req, res) {
+	upload(req, res, function (err) {
+		if (err) {
+			return res.end(err.toString());
+		}
+ 
+		res.end('File is uploaded');
 	});
 });
+
+
+
 
 router.post('/upload', (req, res) => {
 	console.log('yayayyay');
-	console.log(req)
+	console.log(req);
 	console.log(req.file);
-	return res.json({msg:'worked!'})
+	return res.json({msg:'worked!'});
 		
-	});
+});
 
 
 
@@ -130,7 +139,7 @@ router.post('/updateUser', ( req , res ) => {
 
 // profile 
 router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res) => {
-	console.log(req.user)
+	console.log(req.user);
 	return res.json({user: req.user });
 });
 

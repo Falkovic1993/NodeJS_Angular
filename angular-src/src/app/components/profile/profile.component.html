@@ -26,19 +26,18 @@
 
     <input type="file" (change)="onFileSelected($event)">
     <button type="button" (click)="onUpload()">Upload</button>
-    
-    <form [formGroup]="profileForm" (ngSubmit)="uploadImage(profileForm)">
-      <div class="file-field input-field">
-        <div class="btn">
-          <span>File</span>
-          <input type="file" name="profile_img" [formControl]="profileForm.controls['profile_img']">
-        </div>
-        <div class="file-path-wrapper">
-          <input class="file-path validate" type="text">
-        </div>
-      </div>
-      <button class="btn" type="submit">Submit</button>
-    </form>
+    <br><br>
+
+    <input type="file" ng2FileSelect [uploader]="uploader" />
+    <button type="button" class="btn btn-success btn-xs"
+                                (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                            <span class="glyphicon glyphicon-upload"></span> Upload
+                        </button>
+                        
+                        <button type="button" class="btn btn-success btn-s"
+                        (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                    <span class="glyphicon glyphicon-upload"></span> Upload all
+                </button>
   </div>
 </div>
 

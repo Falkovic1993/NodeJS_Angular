@@ -11,7 +11,9 @@ import { UserActions } from './profile.action';
 import { NavbarService } from '../../services/navbar.service';
 import { HttpClient } from '@angular/common/http';
 import { Http } from '@angular/http';
+import { FileUploader } from 'ng2-file-upload';
 
+const URL = "https://safe-badlands-70131.herokuapp.com/users/upload/"
 
 @Component({
   selector: 'app-profile',
@@ -31,7 +33,8 @@ export class ProfileComponent implements OnInit {
   profile: User;
   name:string;
   phone:number;
-
+  public uploader:FileUploader = new FileUploader({url: URL});
+ 
   
   
   constructor(
