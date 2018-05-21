@@ -58,6 +58,10 @@ export class ProfileComponent implements OnInit {
       phone:["", Validators.required],
     })
 
+    this.profileForm = this.fb.group({
+      profile_img: ['', Validators.required]
+    })
+
 
 
     

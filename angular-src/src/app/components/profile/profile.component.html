@@ -28,7 +28,7 @@
       <div class="file-field input-field">
         <div class="btn">
           <span>File</span>
-          <input type="file" name="profile_img">
+          <input type="file" name="profile_img" [formControl]="profileForm.controls['profile_img']">
         </div>
         <div class="file-path-wrapper">
           <input class="file-path validate" type="text">
