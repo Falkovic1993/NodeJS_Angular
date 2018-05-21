@@ -53,11 +53,11 @@ app.post('/upload', function (req, res) {
 
 
 
-/*
+
 app.use(function (req, res, next) {
 	var form = new formidable.IncomingForm({
 		encoding: 'utf-8',
-		uploadDir: './tmp',
+		uploadDir: './tmp/images',
 		multiples: true,
 		keepExtensions: true
 	});
@@ -67,7 +67,7 @@ app.use(function (req, res, next) {
 		next();
 	});
 });
-*/
+
 
 
 
