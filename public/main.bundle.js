@@ -311,7 +311,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_4__angular_forms__["b" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_0_angular2_materialize__["a" /* MaterializeModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_6__angular_common_http__["b" /* HttpClientModule */],
+                __WEBPACK_IMPORTED_MODULE_6__angular_common_http__["a" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_14__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_15__angular_material_button__["a" /* MatButtonModule */],
                 __WEBPACK_IMPORTED_MODULE_16__angular_material_menu__["a" /* MatMenuModule */],
@@ -1040,7 +1040,7 @@ module.exports = "<div class=\"row container\" *ngIf=\"user\">\n    <h2 id=\"use
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_redux_store___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__angular_redux_store__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__profile_action__ = __webpack_require__("../../../../../src/app/components/profile/profile.action.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_navbar_service__ = __webpack_require__("../../../../../src/app/services/navbar.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1139,7 +1139,7 @@ var ProfileComponent = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_5__angular_redux_store__["NgRedux"],
             __WEBPACK_IMPORTED_MODULE_6__profile_action__["a" /* UserActions */],
             __WEBPACK_IMPORTED_MODULE_7__services_navbar_service__["a" /* NavbarService */],
-            __WEBPACK_IMPORTED_MODULE_8__angular_common_http__["a" /* HttpClient */]])
+            __WEBPACK_IMPORTED_MODULE_8__angular_http__["Http"]])
     ], ProfileComponent);
     return ProfileComponent;
 }());

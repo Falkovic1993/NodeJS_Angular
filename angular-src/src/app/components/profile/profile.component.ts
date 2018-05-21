@@ -10,6 +10,7 @@ import { IAppState } from '../../store/store';
 import { UserActions } from './profile.action';
 import { NavbarService } from '../../services/navbar.service';
 import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 
 
 @Component({
@@ -41,7 +42,7 @@ export class ProfileComponent implements OnInit {
     private ngRedux: NgRedux<IAppState>,
     private userActions: UserActions,
     public nav: NavbarService,
-    private http:HttpClient
+    private http:Http
   ) { }
 
   ngOnInit() {
