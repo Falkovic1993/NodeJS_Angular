@@ -36,6 +36,7 @@ app.use(function (req, res, next) {
 var type = upload.single('photo');
 
 app.post('/upload', type, function (req,res) {
+	console.log(req)
 
 	/** When using the "single"
       data come in "req.file" regardless of the attribute "name". **/
