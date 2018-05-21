@@ -24,20 +24,13 @@
   <div class="col s6">
     <h2>Upload profile image</h2>
 
-    <input type="file" name="photo" (change)="onFileSelected($event)">
-    <button type="button" (click)="onUpload()">Upload</button>
-    <br><br>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name='photo' placeholder="Select file"/>
+      <br/>
+      <button>Upload</button>
+  </form>
+  
 
-    <input type="file" ng2FileSelect name="photo" [uploader]="uploader" />
-    <button type="button" class="btn btn-success btn-xs"
-                                (click)="item.upload()">
-                            <span class="glyphicon glyphicon-upload"></span> Upload
-                        </button>
-
-                        <button type="button" class="btn btn-success btn-s"
-                        (click)="uploader.uploadAll()">
-                    <span class="glyphicon glyphicon-upload"></span> Upload all
-                </button>
   </div>
 </div>
 
