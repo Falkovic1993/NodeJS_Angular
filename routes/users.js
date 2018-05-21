@@ -34,15 +34,12 @@ router.post('/getuserbyid', (req, res) => {
 
 router.post('/upload', (req, res) => {
 	console.log('yayayyay');
-	upload(req, res, (err) => {
-		if(err){
-			console.log(err);
-		}else {
-			console.log(req.file);
-			res.json({msg:'worked!'})
-		}
-	})
-});
+	console.log(req)
+	console.log(req.file);
+	return res.json({msg:'worked!'})
+		
+	});
+
 
 
 router.post('/register', (req, res) => {

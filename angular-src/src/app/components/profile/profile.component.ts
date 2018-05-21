@@ -101,7 +101,7 @@ export class ProfileComponent implements OnInit {
   onUpload(){
     const fd = new FormData();
     fd.append('image', this.selectedFile, this.selectedFile.name)
-    this.http.post('users/upload', fd).subscribe(res => console.log(res))
+    return this.http.post('users/upload', fd).subscribe(res => console.log(res))
   }
 
   uploadImage(profileForm){
