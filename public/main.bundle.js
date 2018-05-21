@@ -79,8 +79,7 @@ var AppRoutingModule = /** @class */ (function () {
     AppRoutingModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forRoot(appRoutes, { enableTracing: false } // For debugging
-                )
+                __WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forRoot(appRoutes, { useHash: true })
             ],
             exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]]
         })
@@ -312,7 +311,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_4__angular_forms__["b" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_0_angular2_materialize__["a" /* MaterializeModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_6__angular_common_http__["a" /* HttpClientModule */],
+                __WEBPACK_IMPORTED_MODULE_6__angular_common_http__["b" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_14__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_15__angular_material_button__["a" /* MatButtonModule */],
                 __WEBPACK_IMPORTED_MODULE_16__angular_material_menu__["a" /* MatMenuModule */],
@@ -1022,7 +1021,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/profile/profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row container\" *ngIf=\"user\">\n    <h2 id=\"userFirstname\" class=\"collection-header center-align\">{{user.firstname}} {{user.lastname}}</h2>\n  <div class=\"col s6\">\n      <div class=\"card redbg\">\n          <div class=\"card-content white-text\">\n            <span class=\"card-title\">About Me!</span>\n            <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively. Test me out!</p>\n          </div>                  \n        </div>\n  </div>\n  <div class=\"col s6\">\n    <div *ngIf=\"user\">\n      <ul class=\"collection\">\n        <li class=\"collection-item\">Firstname: {{user.firstname}}</li>\n        <li class=\"collection-item\">Lastname: {{user.lastname}}</li>\n        <li class=\"collection-item\">Email: {{user.email}}</li>\n        <li class=\"collection-item\">Phone: {{user.phone}}</li>\n      </ul>\n      <button id=\"btnUpdateUser\" class=\"btn-floating btn-large waves-effect bluebg btnUpdateProfile\" (click)=\"openModal()\"><i class=\"material-icons\">edit</i></button>\n    </div>\n  </div>\n</div>\n<div class=\"row\">\n  <div class=\"col s6\">\n    <h2>Upload profile image</h2>\n    \n    <form [formGroup]=\"profileForm\" (ngSubmit)=\"uploadImage(profileForm)\">\n      <div class=\"file-field input-field\">\n        <div class=\"btn\">\n          <span>File</span>\n          <input type=\"file\" name=\"profile_img\" [formControl]=\"profileForm.controls['profile_img']\">\n        </div>\n        <div class=\"file-path-wrapper\">\n          <input class=\"file-path validate\" type=\"text\">\n        </div>\n      </div>\n      <button class=\"btn\" type=\"submit\">Submit</button>\n    </form>\n  </div>\n</div>\n\n\n\n      \n    <div id=\"modal1\" class=\"modal updateProfile-wrapper valign-wrapper z-depth-4 card-panel\" materialize=\"modal\" [materializeParams]=\"[{dismissible: false}]\" [materializeActions]=\"modalActions\">\n      \n      <div class=\"modal-content center-align\">\n        <h4>Update profile</h4>\n        <form [formGroup]=\"updateUserForm\" (ngSubmit)=\"onSubmit(updateUserForm)\" class=\"col s12\">\n          <div class=\"row\">\n            <div class=\"input-field col s6 center\">\n                <i class=\"material-icons profileIcon\">person_outline</i>\n              <input id=\"updateFirstname\"  name=\"firstname\" [formControl]=\"updateUserForm.controls['firstname']\" type=\"text\" class=\"validate profileInput\">\n              <label class=\"profileLabel\" for=\"profile_firstname\">{{user.firstname}}</label>\n            </div>\n            <div class=\"input-field col s6 center\">\n              <input id=\"updateLastname\"  name=\"lastname\" [formControl]=\"updateUserForm.controls['lastname']\" type=\"text\" class=\"validate profileInput\">\n              <label class=\"profileLabel\" for=\"profile_last_name\">Last Name</label>\n            </div>\n          </div>\n          <div class=\"row\">\n            <div class=\"input-field col s12 center\">\n                <i class=\"material-icons profileIcon\">person_outline</i>\n              <input id=\"updatePw\" name=\"password\" [formControl]=\"updateUserForm.controls['password']\" type=\"password\" class=\"validate profileInput\">\n              <label class=\"profileLabel\" for=\"profile_password\">Password</label>\n            </div>\n          </div>\n          <div class=\"row\">\n            <div class=\"input-field col s12 center\">\n                <i class=\"material-icons profileIcon\">person_outline</i>\n              <input id=\"updateEmail\" name=\"email\" [formControl]=\"updateUserForm.controls['email']\" type=\"email\" class=\"validate profileInput\">\n              <label class=\"profileLabel\" for=\"profile_email\">Email</label>\n            </div>\n          </div>\n          <div class=\"row\">\n            <div class=\"input-field col s12 center\">\n                <i class=\"material-icons profileIcon\">person_outline</i>\n              <input id=\"updatePhone\" name=\"phone\" [formControl]=\"updateUserForm.controls['phone']\" type=\"phone\" class=\"validate profileInput\">\n              <label class=\"profileLabel\" for=\"profile_phone\">Phone</label>\n            </div>\n          </div>\n          <button class=\"waves-effect  btn-flat\" (click)=\"closeModal()\">Close</button>\n          <button id=\"userUpdated\" class=\"modal-action modal-close waves-effect btn-flat\" type=\"submit\" name=\"action\">Update\n            <i class=\"material-icons right\">send</i>\n          </button>\n        </form>\n      </div>\n      </div>\n  "
+module.exports = "<div class=\"row container\" *ngIf=\"user\">\n    <h2 id=\"userFirstname\" class=\"collection-header center-align\">{{user.firstname}} {{user.lastname}}</h2>\n  <div class=\"col s6\">\n      <div class=\"card redbg\">\n          <div class=\"card-content white-text\">\n            <span class=\"card-title\">About Me!</span>\n            <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively. Test me out!</p>\n          </div>                  \n        </div>\n  </div>\n  <div class=\"col s6\">\n    <div *ngIf=\"user\">\n      <ul class=\"collection\">\n        <li class=\"collection-item\">Firstname: {{user.firstname}}</li>\n        <li class=\"collection-item\">Lastname: {{user.lastname}}</li>\n        <li class=\"collection-item\">Email: {{user.email}}</li>\n        <li class=\"collection-item\">Phone: {{user.phone}}</li>\n      </ul>\n      <button id=\"btnUpdateUser\" class=\"btn-floating btn-large waves-effect bluebg btnUpdateProfile\" (click)=\"openModal()\"><i class=\"material-icons\">edit</i></button>\n    </div>\n  </div>\n</div>\n<div class=\"row\">\n  <div class=\"col s6\">\n    <h2>Upload profile image</h2>\n\n    <input type=\"file\" (change)=\"onFileSelected($event)\">\n    <button type=\"button\" (click)=\"onUpload()\">Upload</button>\n    \n    <form [formGroup]=\"profileForm\" (ngSubmit)=\"uploadImage(profileForm)\">\n      <div class=\"file-field input-field\">\n        <div class=\"btn\">\n          <span>File</span>\n          <input type=\"file\" name=\"profile_img\" [formControl]=\"profileForm.controls['profile_img']\">\n        </div>\n        <div class=\"file-path-wrapper\">\n          <input class=\"file-path validate\" type=\"text\">\n        </div>\n      </div>\n      <button class=\"btn\" type=\"submit\">Submit</button>\n    </form>\n  </div>\n</div>\n\n\n\n      \n    <div id=\"modal1\" class=\"modal updateProfile-wrapper valign-wrapper z-depth-4 card-panel\" materialize=\"modal\" [materializeParams]=\"[{dismissible: false}]\" [materializeActions]=\"modalActions\">\n      \n      <div class=\"modal-content center-align\">\n        <h4>Update profile</h4>\n        <form [formGroup]=\"updateUserForm\" (ngSubmit)=\"onSubmit(updateUserForm)\" class=\"col s12\">\n          <div class=\"row\">\n            <div class=\"input-field col s6 center\">\n                <i class=\"material-icons profileIcon\">person_outline</i>\n              <input id=\"updateFirstname\"  name=\"firstname\" [formControl]=\"updateUserForm.controls['firstname']\" type=\"text\" class=\"validate profileInput\">\n              <label class=\"profileLabel\" for=\"profile_firstname\">{{user.firstname}}</label>\n            </div>\n            <div class=\"input-field col s6 center\">\n              <input id=\"updateLastname\"  name=\"lastname\" [formControl]=\"updateUserForm.controls['lastname']\" type=\"text\" class=\"validate profileInput\">\n              <label class=\"profileLabel\" for=\"profile_last_name\">Last Name</label>\n            </div>\n          </div>\n          <div class=\"row\">\n            <div class=\"input-field col s12 center\">\n                <i class=\"material-icons profileIcon\">person_outline</i>\n              <input id=\"updatePw\" name=\"password\" [formControl]=\"updateUserForm.controls['password']\" type=\"password\" class=\"validate profileInput\">\n              <label class=\"profileLabel\" for=\"profile_password\">Password</label>\n            </div>\n          </div>\n          <div class=\"row\">\n            <div class=\"input-field col s12 center\">\n                <i class=\"material-icons profileIcon\">person_outline</i>\n              <input id=\"updateEmail\" name=\"email\" [formControl]=\"updateUserForm.controls['email']\" type=\"email\" class=\"validate profileInput\">\n              <label class=\"profileLabel\" for=\"profile_email\">Email</label>\n            </div>\n          </div>\n          <div class=\"row\">\n            <div class=\"input-field col s12 center\">\n                <i class=\"material-icons profileIcon\">person_outline</i>\n              <input id=\"updatePhone\" name=\"phone\" [formControl]=\"updateUserForm.controls['phone']\" type=\"phone\" class=\"validate profileInput\">\n              <label class=\"profileLabel\" for=\"profile_phone\">Phone</label>\n            </div>\n          </div>\n          <button class=\"waves-effect  btn-flat\" (click)=\"closeModal()\">Close</button>\n          <button id=\"userUpdated\" class=\"modal-action modal-close waves-effect btn-flat\" type=\"submit\" name=\"action\">Update\n            <i class=\"material-icons right\">send</i>\n          </button>\n        </form>\n      </div>\n      </div>\n  "
 
 /***/ }),
 
@@ -1041,6 +1040,7 @@ module.exports = "<div class=\"row container\" *ngIf=\"user\">\n    <h2 id=\"use
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_redux_store___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__angular_redux_store__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__profile_action__ = __webpack_require__("../../../../../src/app/components/profile/profile.action.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_navbar_service__ = __webpack_require__("../../../../../src/app/services/navbar.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1058,8 +1058,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var ProfileComponent = /** @class */ (function () {
-    function ProfileComponent(authService, router, fb, flashMessage, ngRedux, userActions, nav) {
+    function ProfileComponent(authService, router, fb, flashMessage, ngRedux, userActions, nav, http) {
         this.authService = authService;
         this.router = router;
         this.fb = fb;
@@ -1067,7 +1068,9 @@ var ProfileComponent = /** @class */ (function () {
         this.ngRedux = ngRedux;
         this.userActions = userActions;
         this.nav = nav;
+        this.http = http;
         this.modalActions = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.selectedFile = null;
     }
     ProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1110,6 +1113,14 @@ var ProfileComponent = /** @class */ (function () {
             this.userActions.updateUser(newUser);
         }
     };
+    ProfileComponent.prototype.onFileSelected = function (event) {
+        this.selectedFile = event.target.files[0];
+    };
+    ProfileComponent.prototype.onUpload = function () {
+        var fd = new FormData();
+        fd.append('image', this.selectedFile, this.selectedFile.name);
+        this.http.post('/users/upload', fd).subscribe(function (res) { return console.log(res); });
+    };
     ProfileComponent.prototype.uploadImage = function (profileForm) {
         console.log(profileForm);
         this.authService.uploadImage(profileForm);
@@ -1127,7 +1138,8 @@ var ProfileComponent = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_4_angular2_flash_messages__["FlashMessagesService"],
             __WEBPACK_IMPORTED_MODULE_5__angular_redux_store__["NgRedux"],
             __WEBPACK_IMPORTED_MODULE_6__profile_action__["a" /* UserActions */],
-            __WEBPACK_IMPORTED_MODULE_7__services_navbar_service__["a" /* NavbarService */]])
+            __WEBPACK_IMPORTED_MODULE_7__services_navbar_service__["a" /* NavbarService */],
+            __WEBPACK_IMPORTED_MODULE_8__angular_common_http__["a" /* HttpClient */]])
     ], ProfileComponent);
     return ProfileComponent;
 }());

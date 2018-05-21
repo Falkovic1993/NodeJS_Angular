@@ -9,6 +9,7 @@ import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../store/store';
 import { UserActions } from './profile.action';
 import { NavbarService } from '../../services/navbar.service';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class ProfileComponent implements OnInit {
   modalActions = new EventEmitter<string|MaterializeAction>();
   updateUserForm: FormGroup;
   firstname: string;
+  selectedFile: File = null;
   profileForm: FormGroup;
   lastname:string;
   password:string;
@@ -38,7 +40,8 @@ export class ProfileComponent implements OnInit {
     private flashMessage: FlashMessagesService,
     private ngRedux: NgRedux<IAppState>,
     private userActions: UserActions,
-    public nav: NavbarService
+    public nav: NavbarService,
+    private http:HttpClient
   ) { }
 
   ngOnInit() {
@@ -88,6 +91,16 @@ export class ProfileComponent implements OnInit {
       
       this.userActions.updateUser(newUser)
     } 
+  }
+
+  onFileSelected(event){
+   this.selectedFile = <File>event.target.files[0];
+  }
+  
+  onUpload(){
+    const fd = new FormData();
+    fd.append('image', this.selectedFile, this.selectedFile.name)
+    this.http.post('/users/upload', fd).subscribe(res => console.log(res))
   }
 
   uploadImage(profileForm){
