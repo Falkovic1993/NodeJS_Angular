@@ -1119,7 +1119,7 @@ var ProfileComponent = /** @class */ (function () {
     ProfileComponent.prototype.onUpload = function () {
         var fd = new FormData();
         fd.append('image', this.selectedFile, this.selectedFile.name);
-        this.http.post('/users/upload', fd).subscribe(function (res) { return console.log(res); });
+        this.http.post('users/upload', fd).subscribe(function (res) { return console.log(res); });
     };
     ProfileComponent.prototype.uploadImage = function (profileForm) {
         console.log(profileForm);
