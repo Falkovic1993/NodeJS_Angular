@@ -18,11 +18,13 @@ const messages = require('./routes/messages');
 
 
 // headers and content type
+/*
 app.use(function (req, res, next) {
 	res.header('Access-Control-Allow-Origin', '*');
 	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
 	next();
 });
+*/
 
 app.use(express.static(path.join(__dirname + '/public')));
 
@@ -30,6 +32,16 @@ app.use(express.static(path.join(__dirname + '/public')));
 
 //Middleware Formidable
 //app.use(formidable());
+
+
+app.use(function (req, res, next) {
+	res.setHeader('Access-Control-Allow-Origin', 'http://valor-software.github.io');
+	res.setHeader('Access-Control-Allow-Methods', 'POST');
+	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+	res.setHeader('Access-Control-Allow-Credentials', true);
+	next();
+});
+
 
 app.use(function (req, res, next) {
 	var form = new formidable.IncomingForm({
