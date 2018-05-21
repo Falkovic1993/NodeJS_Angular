@@ -1112,7 +1112,7 @@ var ProfileComponent = /** @class */ (function () {
     };
     ProfileComponent.prototype.uploadImage = function (profileForm) {
         console.log(profileForm);
-        this.authService.uploadImage(profileForm).subscribe(function (data) { return console.log(data); });
+        this.authService.uploadImage(profileForm);
         console.log(profileForm.value);
     };
     ProfileComponent = __decorate([
