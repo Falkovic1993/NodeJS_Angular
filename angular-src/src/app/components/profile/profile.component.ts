@@ -13,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
 import { Http } from '@angular/http';
 import { FileUploader } from 'ng2-file-upload';
 
-const URL = "https://safe-badlands-70131.herokuapp.com/users/upload/"
+const URL = "https://safe-badlands-70131.herokuapp.com/upload/"
 
 @Component({
   selector: 'app-profile',

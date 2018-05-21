@@ -28,12 +28,12 @@
     <button type="button" (click)="onUpload()">Upload</button>
     <br><br>
 
-    <input type="file" ng2FileSelect [uploader]="uploader" />
+    <input type="file" ng2FileSelect name="photo" [uploader]="uploader" />
     <button type="button" class="btn btn-success btn-xs"
                                 (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
                             <span class="glyphicon glyphicon-upload"></span> Upload
                         </button>
-                        
+
                         <button type="button" class="btn btn-success btn-s"
                         (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
                     <span class="glyphicon glyphicon-upload"></span> Upload all

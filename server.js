@@ -29,9 +29,9 @@ app.use(function (req, res, next) {
 
 
 
-var DIR = './uploads/';
+
  
-var upload = multer({dest: DIR});
+
  
 app.use(function (req, res, next) {
 	res.setHeader('Access-Control-Allow-Origin', 'http://valor-software.github.io');
@@ -40,28 +40,14 @@ app.use(function (req, res, next) {
 	res.setHeader('Access-Control-Allow-Credentials', true);
 	next();
 });
- 
-app.use(multer({
-	dest: DIR,
-	rename: function (fieldname, filename) {
-		return filename + Date.now();
-	},
-	onFileUploadStart: function (file) {
-		console.log(file.originalname + ' is starting ...');
-	},
-	onFileUploadComplete: function (file) {
-		console.log(file.fieldname + ' uploaded to  ' + file.path);
-	}
-}));
+app.use(multer({dest:'../tmp/images/'}).single('photo'));
 
-app.post('/api', function (req, res) {
-	upload(req, res, function (err) {
-		if (err) {
-			return res.end(err.toString());
-		}
- 
-		res.end('File is uploaded');
-	});
+
+app.post('/upload', function (req, res) {
+
+	console.log(req.files);
+	
+	
 });
 
 
