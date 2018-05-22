@@ -11,7 +11,7 @@ let io = require('socket.io')(http);
 var formidable = require('formidable');
 var path = require('path');
 var multer = require('multer');
-var upload = multer({ dest: 'upload/'});
+var upload = multer({ dest: 'uploads/'});
 var fs = require('fs');
 
 
