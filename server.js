@@ -44,7 +44,7 @@ app.post('/upload', type, function (req,res) {
 
 	/** The original name of the uploaded file
       stored in the variable "originalname". **/
-	var target_path = 'public/uploads' + req.file.originalname;
+	var target_path = 'uploads' + req.file.originalname;
 
 	/** A better way to copy the uploaded file. **/
 	var src = fs.createReadStream(tmp_path);
