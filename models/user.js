@@ -26,7 +26,6 @@ module.exports.getUserById = function(id, callback) {
 		} else {
 			console.log('user get back' , user);
 			return callback(false, user);
-
 		}
 	});
 };

@@ -24,19 +24,19 @@ const messages = require('./routes/messages');
 app.use(express.static(path.join(__dirname + '/public')));
 
 // headers and content type
-/*
+
 app.use(function (req, res, next) {
 	res.header('Access-Control-Allow-Origin', '*');
 	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
 	next();
 });
-*/
+
 
 
 var type = upload.single('photo');
 
 app.post('/upload', type, function (req,res) {
-	console.log(req)
+	console.log(req.file)
 
 	/** When using the "single"
       data come in "req.file" regardless of the attribute "name". **/
@@ -44,28 +44,19 @@ app.post('/upload', type, function (req,res) {
 
 	/** The original name of the uploaded file
       stored in the variable "originalname". **/
-	var target_path = 'uploads' + req.file.originalname;
+	var target_path = 'uploads/' + req.file.originalname;
 
 	/** A better way to copy the uploaded file. **/
 	var src = fs.createReadStream(tmp_path);
 	var dest = fs.createWriteStream(target_path);
 	src.pipe(dest);
+	fs.unlink(tmp_path); //deleting the tmp_path
 	src.on('end', function() { return res.json({msg:'It worked!!'}); });
 	src.on('error', function(err) { return res.json({msg:'It failed...!!'}); });
 
 });
 
-
- 
-
- 
-
-
-
-
-
-
-
+// formidable 
 app.use(function (req, res, next) {
 	var form = new formidable.IncomingForm({
 		encoding: 'utf-8',
