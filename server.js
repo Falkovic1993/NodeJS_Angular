@@ -26,8 +26,10 @@ app.use(express.static(path.join(__dirname + '/public')));
 // headers and content type
 
 app.use(function (req, res, next) {
-	res.header('Access-Control-Allow-Origin', '*');
-	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+	res.setHeader('Access-Control-Allow-Origin', '*');
+	res.setHeader('Access-Control-Allow-Credentials', 'true');
+	res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
+	res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
 	next();
 });
 
@@ -36,7 +38,7 @@ app.use(function (req, res, next) {
 var type = upload.single('photo');
 
 app.post('/upload', type, function (req,res) {
-	console.log(req.file)
+	console.log(req.file);
 
 	/** When using the "single"
       data come in "req.file" regardless of the attribute "name". **/

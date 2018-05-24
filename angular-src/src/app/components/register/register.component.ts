@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
     })
   }
 
-  upload() {
+  /*upload() {
     const formData: any = new FormData();
     const files: Array<File> = this.filesToUpload;
     console.log(files);
@@ -61,6 +61,7 @@ fileChangeEvent(fileInput: any) {
     this.filesToUpload = <Array<File>>fileInput.target.files;
     //this.product.photo = fileInput.target.files[0]['name'];
 }
+*/
 
 
   onSubmit(registerForm){
