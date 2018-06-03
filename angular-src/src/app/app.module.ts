@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
+//import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
 
 import { NgRedux, DevToolsExtension, NgReduxModule } from '@angular-redux/store';
 import { IAppState, rootReducer } from './store/store';
@@ -72,7 +72,7 @@ import { NavbarService } from './services/navbar.service';
     ProjectsComponent,
     DetailedinformationComponent,
     FilterusersPipe,
-    FileSelectDirective
+    //FileSelectDirective
   ],
   imports: [
     FormsModule,

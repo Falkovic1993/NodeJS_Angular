@@ -14,6 +14,7 @@ export class ChatroomComponent implements OnInit {
   msg: string;
   messages = [];
   user:any;
+  message: any;
   
   
 

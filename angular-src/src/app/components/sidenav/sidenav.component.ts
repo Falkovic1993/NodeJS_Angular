@@ -13,7 +13,7 @@ export class SidenavComponent implements OnInit {
  user: any;
 
   constructor(
-    private authService:myAuthService,
+    public authService:myAuthService,
     private ngRedux: NgRedux<IAppState>,
   ) { }
 

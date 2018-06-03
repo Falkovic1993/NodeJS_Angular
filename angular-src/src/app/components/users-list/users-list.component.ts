@@ -15,6 +15,8 @@ import { NavbarService } from '../../services/navbar.service';
 })
 export class UsersListComponent implements OnInit {
   users: User[];
+  search: any;
+  user: User;
 
   constructor(
     private authService:myAuthService,

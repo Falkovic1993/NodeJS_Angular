@@ -5,7 +5,7 @@
       <input type="text" [(ngModel)]="search" placeholder="Search for users">
     </div>
   </div>
-  <div *ngIf="user === -1"> No baby found </div>
+  <div *ngIf="users.length === -1"> No users found </div>
 
   <button class="btn-floating btn-large waves-effect btnaddUserlist redbg"><i class="material-icons">add</i></button>
   

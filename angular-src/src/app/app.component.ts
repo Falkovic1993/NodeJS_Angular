@@ -12,7 +12,7 @@ export class AppComponent {
   modalActions = new EventEmitter<string|MaterializeAction>();
   
   constructor(
-    private authService:myAuthService,
+    public authService:myAuthService,
   ) {}
 
 
