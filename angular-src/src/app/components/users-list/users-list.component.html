@@ -5,7 +5,7 @@
       <input type="text" [(ngModel)]="search" placeholder="Search for users">
     </div>
   </div>
-  <div *ngIf="users.length === -1"> No users found </div>
+  
 
   <button class="btn-floating btn-large waves-effect btnaddUserlist redbg"><i class="material-icons">add</i></button>
   
@@ -23,13 +23,17 @@
         </thead>
       <tbody>
         <tr class="userslist" *ngFor='let user of users | filterusers: search'>
+         
           <td>{{user.firstname | uppercase}}</td>
           <td>{{user.email}}</td>
           <td>{{user.phone}}</td>
-          <td><button class="btn bluebg" (click)='userDetails(user.id)'><i class="material-icons">info</i></button></td>
-          <td><button class="btn btnDeleteUser redbg" (click)='deleteUser(user.id)'><i class="material-icons">delete</i></button></td>
+          <td *ngIf="user !== -1"><button class="btn bluebg" (click)='userDetails(user.id)'><i class="material-icons">info</i></button></td>
+          <td *ngIf="user !== -1"><button class="btn btnDeleteUser redbg" (click)='deleteUser(user.id)'><i class="material-icons">delete</i></button></td>
+          <div *ngIf="user === -1"> <h3 class="center-align">No users found </h3></div>
         </tr>
+    
       </tbody>
+      
     </table>
     </div> 
   </div>

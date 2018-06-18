@@ -3,6 +3,7 @@ import { User } from './entities/user';
 
 @Pipe({
   name: 'filterusers'
+
 })
 @Injectable()
 export class FilterusersPipe implements PipeTransform {

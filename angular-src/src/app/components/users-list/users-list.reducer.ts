@@ -22,7 +22,7 @@ export function UsersReducer(state: UsersState = INITIAL_STATE, action:any) {
 
          // GET ALL USERS 
          case UsersActions.DELETE_USER:
-         console.log(action.payload)
+        // console.log(action.payload)
          return state;
  
          case UsersActions.USER_DELETED:

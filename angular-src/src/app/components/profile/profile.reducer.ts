@@ -16,7 +16,7 @@ export function UserReducer(state: UserState = INITIAL_STATE, action:any) {
         case UserActions.RECEIVED_USER:
         //action.payload is array of users 
         // I could set loading flag to false.
-        console.log('action',action.payload) 
+        //console.log('action',action.payload) 
         return tassign(state, {user: action.payload.user[0]})
 
         case UserActions.GET_USER:

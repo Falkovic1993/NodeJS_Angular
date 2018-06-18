@@ -42,7 +42,7 @@ const appRoutes: Routes = [
     imports: [
       RouterModule.forRoot(
         appRoutes,
-        {useHash:true},
+        
       )
     ],
     exports: [RouterModule]

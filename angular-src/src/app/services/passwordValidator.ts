@@ -5,7 +5,7 @@ export class PasswordValidator {
   static getPasswordValidator() {
     return function pwValidator(control: FormControl): { [s: string]: boolean } {
 
-      // Write code here..
+     
       if (control.value.match(/^123/)) {
         return {invalidPassword: true};
       }

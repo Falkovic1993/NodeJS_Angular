@@ -18,14 +18,14 @@ export class UsersEpic {
   ) {}
 
   getAllUsers = (action$: ActionsObservable<any>) => {
-    return action$.ofType(UsersActions.GET_USERS) // Listen for this action
-      .mergeMap(({payload}) => { // payload: (subject: Subject, date: Date): When this action is activated, call ws through service class or directly like below
+    return action$.ofType(UsersActions.GET_USERS)
+      .mergeMap(({payload}) => { 
           return this.authService.getAllUsers()
-            .map(result => ({ // when web service responds with success, call this action with payload that came back from webservice
+            .map(result => ({ 
               type: UsersActions.RECEIVED_USERS,
-              payload: result // Hack: Db contains all data, not just yours.
+              payload: result 
             }))
-            .catch(error => Observable.of({ // when web service responds with failure, call this action with payload that came back from webservice
+            .catch(error => Observable.of({ 
               type: UsersActions.FAILED_RECEVIED_USERS,
               payload: error
           }));
@@ -33,14 +33,14 @@ export class UsersEpic {
   }
 
   deleteUser = (action$: ActionsObservable<any>) => {
-    return action$.ofType(UsersActions.DELETE_USER) // Listen for this action
-      .mergeMap(({payload}) => { // payload: (subject: Subject, date: Date): When this action is activated, call ws through service class or directly like below
+    return action$.ofType(UsersActions.DELETE_USER) 
+      .mergeMap(({payload}) => {
           return this.authService.deleteUser(payload)
-            .map(result => ({ // when web service responds with success, call this action with payload that came back from webservice
+            .map(result => ({
               type: UsersActions.USER_DELETED,
-              payload: payload // Hack: Db contains all data, not just yours.
+              payload: payload 
             }))
-            .catch(error => Observable.of({ // when web service responds with failure, call this action with payload that came back from webservice
+            .catch(error => Observable.of({ 
               type: UsersActions.USER_DELETED_FAILED,
               payload: error
           }));
@@ -49,11 +49,11 @@ export class UsersEpic {
 
   getUser = (action$: ActionsObservable<any>) => {
     return action$.ofType(UserActions.GET_USER) // Listen for this action
-      .mergeMap(({payload}) => { // payload: (subject: Subject, date: Date): When this action is activated, call ws through service class or directly like below
+      .mergeMap(({payload}) => { 
           return this.authService.getProfile()
             .map(result => ({ // when web service responds with success, call this action with payload that came back from webservice
               type: UserActions.RECEIVED_USER,
-              payload: result // Hack: Db contains all data, not just yours.
+              payload: result 
             }))
             .catch(error => Observable.of({ // when web service responds with failure, call this action with payload that came back from webservice
               type: UserActions.FAILED_RECEVIED_USER,
