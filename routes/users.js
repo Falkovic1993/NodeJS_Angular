@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const nodemailer = require('nodemailer');
 const url = require('url');
+const request = require('request');
 
 const path = require('path');
 var fs = require('fs');
@@ -15,10 +16,15 @@ var fs = require('fs');
 router.post('/getuserbyid', (req, res) => {
 	//console.log('USER ID',req.headers.id)
 	let userId = req.headers.id;
-	User.getUserById(userId, (err, user) =>{
-		//console.log('uuser',user)
-		return res.json({user});
-	});
+	try{
+		User.getUserById(userId, (err, user) =>{
+			//console.log('uuser',user)
+			return res.json({user});
+		});
+	}
+	catch(ex){
+		console.log(ex);
+	}
 });
 
 
@@ -31,7 +37,7 @@ router.post('/register', (req, res) => {
 		phone: req.fields.phone,
 		//image: req.fields.image,
 	};
-	console.log('FILES', req.files);
+	
 	
 
 	User.addUser(newUser, (err, user) => {
@@ -47,7 +53,7 @@ router.post('/authenticate', (req, res) => {
 	const email = req.fields.email;
 	const password = req.fields.password;
 	const googleToken = req.fields.token;
-	console.log(email);
+	//console.log(email);
 
 	User.getUserByUserEmail(email, (err, user) => {
 		if(err) throw err;
@@ -104,8 +110,14 @@ router.post('/updateUser', ( req , res ) => {
 		password: req.fields.password,
 		phone: req.fields.phone,
 	};
-	User.updateUser(newUser);
-	return res.json({success:true, msg:'User updated!'});
+	try{
+		User.updateUser(newUser);
+		return res.json({success:true, msg:'User updated!'});
+	}
+	catch(ex){
+		console.log(ex, 'User didnt update');
+		return res.json({success:false, msg:'Error updating user'});
+	}
 });
 
 // profile 
@@ -125,6 +137,19 @@ router.post('/deleteUser', (req, res) => {
 	User.deleteUser(userid, (err, data) => {
 		return res.json({data});
 	});
+});
+
+router.post('/sendSMS', (req, res) => {
+	let newData = `apiToken=$2y$10$XE8PnMXRtvHUbBuaDQPVnugRwUxoOx85SZzoCtoWGwKDnKeK8av7O&message=${req.fields.message}&mobile=${req.fields.mobile}`;
+
+	request.post('http://smses.io/api-send-sms.php', {form:newData}, (err, httpResponse, body) => {
+		if(err){
+			return console.log(err , 'Sms failed');
+		}
+		return res.json({msg: 'it worked!', body:body});
+	});
+
+
 });
 
 
