@@ -24,7 +24,7 @@ const messages = require('./routes/messages');
 app.use(express.static(path.join(__dirname + '/public')));
 
 // headers and content type
-
+/*
 app.use(function (req, res, next) {
 	res.setHeader('Access-Control-Allow-Origin', '*');
 	res.setHeader('Access-Control-Allow-Credentials', 'true');
@@ -32,9 +32,7 @@ app.use(function (req, res, next) {
 	res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
 	next();
 });
-
-
-
+*/
 var type = upload.single('photo');
 
 app.post('/upload', type, function (req,res) {
@@ -52,7 +50,7 @@ app.post('/upload', type, function (req,res) {
 	var src = fs.createReadStream(tmp_path);
 	var dest = fs.createWriteStream(target_path);
 	src.pipe(dest);
-	fs.unlink(tmp_path); //deleting the tmp_path
+	//fs.unlink(tmp_path); //deleting the tmp_path
 	src.on('end', function() { return res.json({msg:'It worked!!'}); });
 	src.on('error', function(err) { return res.json({msg:'It failed...!!'}); });
 
