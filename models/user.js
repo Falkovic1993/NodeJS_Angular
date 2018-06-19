@@ -23,7 +23,6 @@ module.exports.getUserById = function(id, callback) {
 	global.db.query(stmt, id, (err, user) => {
 		if(err){
 			console.log(err);
-			return callback(false, err);
 		} else {
 		//	console.log('user get back' , user);
 			return callback(false, user);
@@ -110,3 +109,4 @@ module.exports.deleteUser = function(id, callback){
 		return callback(true, null);
 	}
 };
+

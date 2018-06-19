@@ -68,9 +68,6 @@ export class ProfileComponent implements OnInit {
       profile_img: ['', Validators.required]
     })
 
-
-
-    
   }
   openModal() {
     this.modalActions.emit({action:"modal",params:['open']});

@@ -3,6 +3,7 @@ const express = require('express');
 //const bodyParser = require('body-parser');
 const database = require('./config/database');
 const passport = require('passport');
+const User = require('./models/user');
 const cors = require('cors');
 let app = require('express')();
 let http = require('http').Server(app);
@@ -36,7 +37,7 @@ app.use(function (req, res, next) {
 var type = upload.single('photo');
 
 app.post('/upload', type, function (req,res) {
-	console.log(req.file);
+	console.log(req);
 
 	/** When using the "single"
       data come in "req.file" regardless of the attribute "name". **/
@@ -53,6 +54,8 @@ app.post('/upload', type, function (req,res) {
 	//fs.unlink(tmp_path); //deleting the tmp_path
 	src.on('end', function() { return res.json({msg:'It worked!!'}); });
 	src.on('error', function(err) { return res.json({msg:'It failed...!!'}); });
+
+	
 
 });
 

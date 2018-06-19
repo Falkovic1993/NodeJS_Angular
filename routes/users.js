@@ -38,8 +38,6 @@ router.post('/register', (req, res) => {
 		//image: req.fields.image,
 	};
 	
-	
-
 	User.addUser(newUser, (err, user) => {
 		if(err){
 			return res.json({success:false, msg:'Failed to register user'});
